@@ -1,13 +1,10 @@
-﻿using System;
+﻿namespace Delegates;
 
-namespace Delegates
+public class ThresholdComparer
 {
-    public class ThresholdComparer
-    {
-        public int Threshold { get; set; }
+    public int Threshold { get; set; }
 
-        public bool IsGreaterThan(int value) => value > Threshold;
+    public bool IsGreaterThan(int value) => value > Threshold;
 
-        public Predicate<int> GetIsGreaterThanPredicate() => IsGreaterThan;
-    }
+    public Predicate<int> GetIsGreaterThanPredicate() => IsGreaterThan;
 }

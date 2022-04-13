@@ -1,23 +1,28 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-namespace AnonymousFunctions
+namespace AnonymousFunctions;
+
+public static class AnonymousMethodSyntax
 {
-    public static class AnonymousMethodSyntax
+    public static int GetIndexOfFirstNonEmptyBin(int[] bins)
     {
-        public static int GetIndexOfFirstNonEmptyBin(int[] bins)
-        {
-            return Array.FindIndex(
-                bins,
-                delegate (int value) { return value > 0; }
-            );
-        }
+        return Array.FindIndex(
+            bins,
+            delegate (int value) { return value > 0; }
+        );
+    }
 
-        public static void IgnoringArguments()
-        {
-            EventHandler clickHandler = delegate { Debug.WriteLine("Clicked!"); };
+    public static void IgnoringArguments()
+    {
+        EventHandler clickHandler = delegate { Debug.WriteLine("Clicked!"); };
 
-            clickHandler(new object(), EventArgs.Empty);
-        }
+        clickHandler(new object(), EventArgs.Empty);
+    }
+
+    public static void DiscardingArguments()
+    {
+        EventHandler clickHandler = (_, _) => Debug.WriteLine("Clicked!");
+
+        clickHandler(new object(), EventArgs.Empty);
     }
 }

@@ -1,18 +1,15 @@
-﻿using System;
+﻿namespace AnonymousFunctions;
 
-namespace AnonymousFunctions
+public static class VariableFromContainingMethodExpressionBodied
 {
-    public static class VariableFromContainingMethodExpressionBodied
+    public static Predicate<int> IsGreaterThan(int threshold) =>
+        value => value > threshold;
+
+    public static void WhereValueComesFrom()
     {
-        public static Predicate<int> IsGreaterThan(int threshold) =>
-            value => value > threshold;
+        Predicate<int> greaterThanTen = IsGreaterThan(10);
+        bool result = greaterThanTen(200);
 
-        public static void WhereValueComesFrom()
-        {
-            Predicate<int> greaterThanTen = IsGreaterThan(10);
-            bool result = greaterThanTen(200);
-
-            Console.WriteLine(result);
-        }
+        Console.WriteLine(result);
     }
 }

@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace Delegates;
 
-namespace Delegates
+public static class ConditionalInvoke
 {
-    public static class ConditionalInvoke
+    public static void CallMeMaybe(Action<int> userCallback)
     {
-        public static void CallMeMaybe(Action<int> userCallback)
-        {
-            userCallback?.Invoke(42);
-        }
+        userCallback?.Invoke(42);
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DelegateConversion
+﻿namespace DelegateConversion
 {
     class Program
     {
@@ -25,48 +23,5 @@ namespace DelegateConversion
             Func<string, bool> f = pred;  // Will fail with compiler error
         }
 #endif
-
-        public static void DelegateToDelegate()
-        {
-            Predicate<string> pred = IsLongString;
-            var pred2 = new Func<string, bool>(pred); // Less efficient than
-                                                      // a direct reference
-
-            Console.WriteLine(pred2("x"));
-            Console.WriteLine(pred2(new string('x', 100)));
-        }
-
-        public static void DelegateToDelegateExplicit()
-        {
-            Predicate<string> pred = IsLongString;
-            var pred2 = new Func<string, bool>(pred.Invoke);
-
-            Console.WriteLine(pred2("x"));
-            Console.WriteLine(pred2(new string('x', 100)));
-        }
-
-        public static void NewDelegateForcurrentTarget()
-        {
-            Predicate<string> pred = IsLongString;
-            var pred2 = (Func<string, bool>)pred.Method.CreateDelegate(
-              typeof(Func<string, bool>), pred.Target);
-
-            Console.WriteLine(pred2("x"));
-            Console.WriteLine(pred2(new string('x', 100)));
-        }
-
-        public static TResult DuplicateDelegateAs<TResult>(MulticastDelegate source)
-            where TResult : Delegate
-        {
-            Delegate result = null;
-            foreach (Delegate sourceItem in source.GetInvocationList())
-            {
-                var copy = sourceItem.Method.CreateDelegate(
-                  typeof(TResult), sourceItem.Target);
-                result = Delegate.Combine(result, copy);
-            }
-
-            return (TResult)(object)result;
-        }
     }
 }
