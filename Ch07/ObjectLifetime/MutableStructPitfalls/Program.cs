@@ -1,55 +1,44 @@
-﻿using System;
-
-namespace MutableStructPitfalls
+﻿static void CallDispose(IDisposable o)
 {
-    public struct DisposableValue : IDisposable
+    o.Dispose();
+}
+
+DisposableValue dv = new();
+Console.WriteLine("Passing value variable:");
+CallDispose(dv);
+CallDispose(dv);
+CallDispose(dv);
+
+IDisposable id = dv;
+Console.WriteLine("Passing interface variable:");
+CallDispose(id);
+CallDispose(id);
+CallDispose(id);
+
+Console.WriteLine("Calling Dispose directly on value variable:");
+dv.Dispose();
+dv.Dispose();
+dv.Dispose();
+
+Console.WriteLine("Passing value variable:");
+CallDispose(dv);
+CallDispose(dv);
+CallDispose(dv);
+
+public struct DisposableValue : IDisposable
+{
+    private bool _disposedYet;
+
+    public void Dispose()
     {
-        private bool _disposedYet;
-
-        public void Dispose()
+        if (!_disposedYet)
         {
-            if (!_disposedYet)
-            {
-                Console.WriteLine("Disposing for first time");
-                _disposedYet = true;
-            }
-            else
-            {
-                Console.WriteLine("Was already disposed");
-            }
+            Console.WriteLine("Disposing for first time");
+            _disposedYet = true;
         }
-    }
-
-    class Program
-    {
-        static void CallDispose(IDisposable o)
+        else
         {
-            o.Dispose();
-        }
-
-        static void Main(string[] args)
-        {
-            var dv = new DisposableValue();
-            Console.WriteLine("Passing value variable:");
-            CallDispose(dv);
-            CallDispose(dv);
-            CallDispose(dv);
-
-            IDisposable id = dv;
-            Console.WriteLine("Passing interface variable:");
-            CallDispose(id);
-            CallDispose(id);
-            CallDispose(id);
-
-            Console.WriteLine("Calling Dispose directly on value variable:");
-            dv.Dispose();
-            dv.Dispose();
-            dv.Dispose();
-
-            Console.WriteLine("Passing value variable:");
-            CallDispose(dv);
-            CallDispose(dv);
-            CallDispose(dv);
+            Console.WriteLine("Was already disposed");
         }
     }
 }

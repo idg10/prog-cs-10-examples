@@ -1,25 +1,22 @@
-﻿using System;
+﻿namespace Boxing;
 
-namespace Boxing
+public static class Unboxing
 {
-    public static class Unboxing
+    public static void UnboxWithTypePattern(object o)
     {
-        public static void UnboxWithTypePattern(object o)
+        if (o is int i)
         {
-            if (o is int i)
-            {
-                Console.WriteLine(i * 2);
-            }
+            Console.WriteLine(i * 2);
         }
+    }
 
-        public static void UnboxToNullableAndNonNullable()
-        {
-            object boxed = 42;
-            int? nv = boxed as int?;
-            int? nv2 = (int?)boxed;
-            int v = (int)boxed;
+    public static void UnboxToNullableAndNonNullable()
+    {
+        object boxed = 42;
+        int? nv = boxed as int?;
+        int? nv2 = (int?)boxed;
+        int v = (int)boxed;
 
-            Console.WriteLine($"{nv}, {nv2}, {v}");
-        }
+        Console.WriteLine($"{nv}, {nv2}, {v}");
     }
 }

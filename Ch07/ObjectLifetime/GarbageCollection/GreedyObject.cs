@@ -1,7 +1,6 @@
-﻿namespace GarbageCollection
+﻿namespace GarbageCollection;
+
+public class GreedyObject
 {
-    public class GreedyObject
-    {
-        public int[] MyData = new int[100000];
-    }
+    public int[] MyData = new int[100_000];
 }

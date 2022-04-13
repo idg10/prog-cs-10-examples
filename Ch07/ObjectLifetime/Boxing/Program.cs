@@ -1,18 +1,7 @@
-﻿using System;
-
-namespace Boxing
+﻿static void Show(object o)
 {
-    class Program
-    {
-        static void Show(object o)
-        {
-            Console.WriteLine(o.ToString());
-        }
-
-        static void Main(string[] args)
-        {
-            int num = 42;
-            Show(num);
-        }
-    }
+    Console.WriteLine(o.ToString());
 }
+
+int num = 42;
+Show(num);

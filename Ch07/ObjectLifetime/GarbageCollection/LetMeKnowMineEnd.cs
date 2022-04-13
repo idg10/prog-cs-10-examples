@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace GarbageCollection;
 
-namespace GarbageCollection
+public class LetMeKnowMineEnd
 {
-    public class LetMeKnowMineEnd
+    ~LetMeKnowMineEnd()
     {
-        ~LetMeKnowMineEnd()
-        {
-            Console.WriteLine("Goodbye, cruel world");
-        }
+        Console.WriteLine("Goodbye, cruel world");
     }
 }

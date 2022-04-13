@@ -1,5 +1,5 @@
-﻿namespace Disposable
-{
+﻿namespace Disposable;
+
     class Program
     {
         static void Main()
@@ -15,4 +15,3 @@
         void Dispose();
     }
 #endif
-}

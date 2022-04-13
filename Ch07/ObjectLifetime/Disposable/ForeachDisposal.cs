@@ -1,37 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿namespace Disposable;
 
-namespace Disposable
+public static class ForeachDisposal
 {
-    public static class ForeachDisposal
+    public static void SimpleForeach()
     {
-        public static void SimpleForeach()
+        foreach (string file in Directory.EnumerateFiles(@"C:\temp"))
         {
-            foreach (string file in Directory.EnumerateFiles(@"C:\temp"))
+            Console.WriteLine(file);
+        }
+    }
+
+    public static void HowForeachExpands()
+    {
+        IEnumerator<string> e =
+            Directory.EnumerateFiles(@"C:\temp").GetEnumerator();
+        try
+        {
+            while (e.MoveNext())
             {
+                string file = e.Current;
                 Console.WriteLine(file);
             }
         }
-
-        public static void HowForeachExpands()
+        finally
         {
-            IEnumerator<string> e =
-                Directory.EnumerateFiles(@"C:\temp").GetEnumerator();
-            try
+            if (e != null)
             {
-                while (e.MoveNext())
-                {
-                    string file = e.Current;
-                    Console.WriteLine(file);
-                }
-            }
-            finally
-            {
-                if (e != null)
-                {
-                    ((IDisposable)e).Dispose();
-                }
+                ((IDisposable)e).Dispose();
             }
         }
     }

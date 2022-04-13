@@ -1,35 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Diagnostics.CodeAnalysis;
 
-namespace WeakRefs
+namespace WeakRefs;
+
+public class WeakCache<TKey, TValue>
+    where TKey : notnull
+    where TValue : class
 {
-    public class WeakCache<TKey, TValue> where TValue : class
+    private readonly Dictionary<TKey, WeakReference<TValue>> _cache = new();
+
+    public void Add(TKey key, TValue value)
     {
-        private readonly Dictionary<TKey, WeakReference<TValue>> _cache =
-            new Dictionary<TKey, WeakReference<TValue>>();
+        _cache.Add(key, new WeakReference<TValue>(value));
+    }
 
-        public void Add(TKey key, TValue value)
+    public bool TryGetValue(
+        TKey key, [NotNullWhen(true)] out TValue? cachedItem)
+    {
+        if (_cache.TryGetValue(key, out WeakReference<TValue>? entry))
         {
-            _cache.Add(key, new WeakReference<TValue>(value));
+            bool isAlive = entry.TryGetTarget(out cachedItem);
+            if (!isAlive)
+            {
+                _cache.Remove(key);
+            }
+            return isAlive;
         }
-
-        public bool TryGetValue(TKey key, out TValue cachedItem)
+        else
         {
-            WeakReference<TValue> entry;
-            if (_cache.TryGetValue(key, out entry))
-            {
-                bool isAlive = entry.TryGetTarget(out cachedItem);
-                if (!isAlive)
-                {
-                    _cache.Remove(key);
-                }
-                return isAlive;
-            }
-            else
-            {
-                cachedItem = null;
-                return false;
-            }
+            cachedItem = null;
+            return false;
         }
     }
 }
