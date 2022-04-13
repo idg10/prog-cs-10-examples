@@ -1,17 +1,14 @@
-﻿using System;
+﻿namespace Bases;
 
-namespace Bases
+public class SomeClass
 {
-    public class SomeClass
-    {
-    }
+}
 
-    public class Derived : SomeClass
-    {
-    }
+public class Derived : SomeClass
+{
+}
 
-    public class AlsoDerived : SomeClass, IDisposable
-    {
-        public void Dispose() { }
-    }
+public class AlsoDerived : SomeClass, IDisposable
+{
+    public void Dispose() { }
 }

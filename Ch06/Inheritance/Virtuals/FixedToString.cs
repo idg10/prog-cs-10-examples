@@ -1,10 +1,6 @@
-﻿namespace Virtuals
+﻿namespace Virtuals;
+
+public class FixedToString
 {
-    public class FixedToString
-    {
-        public sealed override string ToString()
-        {
-            return "Arf arf!";
-        }
-    }
+    public sealed override string ToString() => "Arf arf!";
 }

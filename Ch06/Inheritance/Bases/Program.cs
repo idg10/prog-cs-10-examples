@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace Bases;
 
-namespace Bases
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
+        Console.WriteLine("Hello World!");
     }
 }

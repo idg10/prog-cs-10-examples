@@ -1,25 +1,24 @@
 ﻿using Library;
-using System;
 
-namespace Virtuals
-{
-    // To see the warning come and go, change this between #if true and
-    // #if false
+namespace Virtuals;
+
+// To see the warning come and go, change this between #if true and
+// #if false
 #if false
-    public class CustomerDerived : LibraryBase
+public class CustomerDerived : LibraryBase
+{
+    public void Start()
     {
-        public void Start()
-        {
-            Console.WriteLine("Derived type's Start method");
-        }
+        Console.WriteLine("Derived type's Start method");
     }
-#else
-    public class CustomerDerived : LibraryBase
-    {
-        public new void Start()
-        {
-            Console.WriteLine("Derived type's Start method");
-        }
-    }
-#endif
 }
+#else
+#pragma warning disable CA1822
+public class CustomerDerived : LibraryBase
+{
+    public new void Start()
+    {
+        Console.WriteLine("Derived type's Start method");
+    }
+}
+#endif

@@ -1,17 +1,16 @@
-﻿namespace Bases
+﻿namespace Bases;
+
+public class Impl : IBoth
 {
-    public class Impl : IBoth
+    public void Base1Method()
     {
-        public void Base1Method()
-        {
-        }
+    }
 
-        public void Base2Method()
-        {
-        }
+    public void Base2Method()
+    {
+    }
 
-        public void Method3()
-        {
-        }
+    public void Method3()
+    {
     }
 }

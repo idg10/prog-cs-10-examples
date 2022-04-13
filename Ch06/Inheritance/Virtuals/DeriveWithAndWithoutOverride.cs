@@ -1,16 +1,13 @@
-﻿using System;
+﻿namespace Virtuals;
 
-namespace Virtuals
+public class DeriveWithoutOverride : BaseWithVirtual
 {
-    public class DeriveWithoutOverride : BaseWithVirtual
-    {
-    }
+}
 
-    public class DeriveAndOverride : BaseWithVirtual
+public class DeriveAndOverride : BaseWithVirtual
+{
+    public override void ShowMessage()
     {
-        public override void ShowMessage()
-        {
-            Console.WriteLine("This is an override");
-        }
+        Console.WriteLine("This is an override");
     }
 }

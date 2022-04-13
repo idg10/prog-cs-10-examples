@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace Virtuals;
 
-namespace Virtuals
+public class BaseWithVirtual
 {
-    public class BaseWithVirtual
+    public virtual void ShowMessage()
     {
-        public virtual void ShowMessage()
-        {
-            Console.WriteLine("Hello from BaseWithVirtual");
-        }
+        Console.WriteLine("Hello from BaseWithVirtual");
     }
 }

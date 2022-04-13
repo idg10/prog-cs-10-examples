@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace Virtuals;
 
-namespace Virtuals
+public abstract class MustBeComparable : IComparable<string>
 {
-    public abstract class MustBeComparable : IComparable<string>
-    {
-        public abstract int CompareTo(string other);
-    }
+    public abstract int CompareTo(string? other);
 }

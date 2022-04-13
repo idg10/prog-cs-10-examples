@@ -1,7 +1,6 @@
-﻿namespace Library
+﻿namespace Library;
+
+public class LibraryBase
 {
-    public class LibraryBase
-    {
-        public virtual void Start() { }
-    }
+    public virtual void Start() { }
 }

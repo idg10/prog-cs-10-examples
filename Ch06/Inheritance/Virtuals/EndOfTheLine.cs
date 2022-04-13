@@ -1,6 +1,5 @@
-﻿namespace Virtuals
+﻿namespace Virtuals;
+
+public sealed class EndOfTheLine
 {
-    public sealed class EndOfTheLine
-    {
-    }
 }

@@ -1,20 +1,17 @@
-﻿using System;
+﻿namespace Construction.Example37;
 
-namespace Construction.Example37
+public class BaseWithZeroArgCtor
 {
-    public class BaseWithZeroArgCtor
+    public BaseWithZeroArgCtor()
     {
-        public BaseWithZeroArgCtor()
-        {
-            Console.WriteLine("Base constructor");
-        }
+        Console.WriteLine("Base constructor");
     }
+}
 
-    public class DerivedNoDefaultCtor : BaseWithZeroArgCtor
+public class DerivedNoDefaultCtor : BaseWithZeroArgCtor
+{
+    public DerivedNoDefaultCtor(int i)
     {
-        public DerivedNoDefaultCtor(int i)
-        {
-            Console.WriteLine("Derived constructor");
-        }
+        Console.WriteLine("Derived constructor");
     }
 }

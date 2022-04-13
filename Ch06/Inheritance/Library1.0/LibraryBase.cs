@@ -1,6 +1,5 @@
-﻿namespace Library
+﻿namespace Library;
+
+public class LibraryBase
 {
-    public class LibraryBase
-    {
-    }
 }

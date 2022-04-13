@@ -1,17 +1,16 @@
-﻿namespace Bases
+﻿namespace Bases;
+
+interface IBase1
 {
-    interface IBase1
-    {
-        void Base1Method();
-    }
+    void Base1Method();
+}
 
-    interface IBase2
-    {
-        void Base2Method();
-    }
+interface IBase2
+{
+    void Base2Method();
+}
 
-    interface IBoth : IBase1, IBase2
-    {
-        void Method3();
-    }
+interface IBoth : IBase1, IBase2
+{
+    void Method3();
 }

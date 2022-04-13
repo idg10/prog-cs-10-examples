@@ -1,6 +1,5 @@
-﻿namespace Generics
+﻿namespace Generics;
+
+public class Derived : Base
 {
-    public class Derived : Base
-    {
-    }
 }

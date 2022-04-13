@@ -1,19 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29418.71
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bases", "Bases\Bases.csproj", "{875C83AD-69A1-499C-A0B5-F87B9444CE9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bases", "Bases\Bases.csproj", "{875C83AD-69A1-499C-A0B5-F87B9444CE9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Generics\Generics.csproj", "{05303461-4137-4657-AFB5-FD3FA7E14E21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generics", "Generics\Generics.csproj", "{05303461-4137-4657-AFB5-FD3FA7E14E21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtuals", "Virtuals\Virtuals.csproj", "{95DCEA40-3C59-453D-B5CC-B904A9420F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virtuals", "Virtuals\Virtuals.csproj", "{95DCEA40-3C59-453D-B5CC-B904A9420F32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library1.0", "Library1.0\Library1.0.csproj", "{7DE42FFB-F12C-4CAC-92E4-E9EBCA320937}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library1.0", "Library1.0\Library1.0.csproj", "{7DE42FFB-F12C-4CAC-92E4-E9EBCA320937}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library1.1", "Library1.1\Library1.1.csproj", "{407A5B9A-FF0F-43D5-97CC-5D73B38DFF70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library1.1", "Library1.1\Library1.1.csproj", "{407A5B9A-FF0F-43D5-97CC-5D73B38DFF70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Construction", "Construction\Construction.csproj", "{4929C7B4-7096-47DE-823B-F0074CD3C606}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Construction", "Construction\Construction.csproj", "{4929C7B4-7096-47DE-823B-F0074CD3C606}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Records", "Records\Records.csproj", "{CB83DD98-B3FA-46FC-89BF-D8120994B5B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4929C7B4-7096-47DE-823B-F0074CD3C606}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4929C7B4-7096-47DE-823B-F0074CD3C606}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4929C7B4-7096-47DE-823B-F0074CD3C606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB83DD98-B3FA-46FC-89BF-D8120994B5B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB83DD98-B3FA-46FC-89BF-D8120994B5B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB83DD98-B3FA-46FC-89BF-D8120994B5B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB83DD98-B3FA-46FC-89BF-D8120994B5B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

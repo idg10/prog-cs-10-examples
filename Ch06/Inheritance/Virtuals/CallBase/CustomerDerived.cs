@@ -1,14 +1,12 @@
-﻿using System;
-using Library;
+﻿using Library;
 
-namespace Virtuals.CallBase
+namespace Virtuals.CallBase;
+
+public class CustomerDerived : LibraryBase
 {
-    public class CustomerDerived : LibraryBase
+    public override void Start()
     {
-        public override void Start()
-        {
-            Console.WriteLine("Derived type's Start method");
-            base.Start();
-        }
+        Console.WriteLine("Derived type's Start method");
+        base.Start();
     }
 }

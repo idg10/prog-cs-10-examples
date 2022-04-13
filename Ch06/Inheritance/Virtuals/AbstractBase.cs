@@ -1,7 +1,6 @@
-﻿namespace Virtuals
+﻿namespace Virtuals;
+
+public abstract class AbstractBase
 {
-    public abstract class AbstractBase
-    {
-        public abstract void ShowMessage();
-    }
+    public abstract void ShowMessage();
 }
