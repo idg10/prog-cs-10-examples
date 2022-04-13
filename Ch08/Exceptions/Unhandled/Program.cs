@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Unhandled
+﻿namespace Unhandled
 {
     class Program
     {

@@ -1,43 +1,39 @@
-﻿using System;
-using System.IO;
+﻿namespace NestedExceptions;
 
-namespace NestedExceptions
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        try
         {
-            try
-            {
-                ShowFirstLineLength(@"C:\Temp\File.txt");
-            }
-            catch (NullReferenceException)
-            {
-                Console.WriteLine("NullReferenceException");
-            }
+            ShowFirstLineLength(@"C:\Temp\File.txt");
         }
-
-        static void ShowFirstLineLength(string fileName)
+        catch (NullReferenceException)
         {
-            try
+            Console.WriteLine("NullReferenceException");
+        }
+    }
+
+    static void ShowFirstLineLength(string fileName)
+    {
+        try
+        {
+            using (var r = new StreamReader(fileName))
             {
-                using (var r = new StreamReader(fileName))
+                try
                 {
-                    try
-                    {
-                        Console.WriteLine(r.ReadLine().Length);
-                    }
-                    catch (IOException x)
-                    {
-                        Console.WriteLine("Error while reading file: {0}",
-                            x.Message);
-                    }
+                    Console.WriteLine(r.ReadLine()!.Length);
+                }
+                catch (IOException x)
+                {
+                    Console.WriteLine("Error while reading file: {0}",
+                        x.Message);
                 }
             }
-            catch (FileNotFoundException x)
-            {
-                Console.WriteLine("Couldn't find the file '{0}'", x.FileName);
-            }
+        }
+        catch (FileNotFoundException x)
+        {
+            Console.WriteLine("Couldn't find the file '{0}'", x.FileName);
         }
     }
 }

@@ -1,12 +1,26 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿namespace Exceptions;
 
-namespace Exceptions
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        using (var r = new StreamReader(@"C:\Temp\File.txt"))
+        {
+            while (!r.EndOfStream)
+            {
+                Console.WriteLine(r.ReadLine());
+            }
+        }
+    }
+
+    static int Divide(int x, int y)
+    {
+        return x / y;
+    }
+
+    static void HandlingExceptions()
+    {
+        try
         {
             using (var r = new StreamReader(@"C:\Temp\File.txt"))
             {
@@ -16,92 +30,84 @@ namespace Exceptions
                 }
             }
         }
-
-        static int Divide(int x, int y)
+        catch (FileNotFoundException)
         {
-            return x / y;
+            Console.WriteLine("Couldn't find the file");
         }
+    }
 
-        static void HandlingExceptions()
+    static void ExceptionObjects()
+    {
+        try
         {
-            try
+            // ... same code as Example 8-3 ...
+            using (var r = new StreamReader(@"C:\Temp\File.txt"))
             {
-                using (StreamReader r = new StreamReader(@"C:\Temp\File.txt"))
+                while (!r.EndOfStream)
                 {
-                    while (!r.EndOfStream)
-                    {
-                        Console.WriteLine(r.ReadLine());
-                    }
+                    Console.WriteLine(r.ReadLine());
                 }
             }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine("Couldn't find the file");
-            }
         }
-
-        static void ExceptionObjects()
+        catch (FileNotFoundException x)
         {
-            try
+            Console.WriteLine($"File '{x.FileName}' is missing");
+        }
+    }
+
+    static void MultipleCatchBlocks()
+    {
+        try
+        {
+            using (var r = new StreamReader(@"C:\Temp\File.txt"))
             {
-                // ... same code as Example 8-3 ...
-                using (StreamReader r = new StreamReader(@"C:\Temp\File.txt"))
+                while (!r.EndOfStream)
                 {
-                    while (!r.EndOfStream)
-                    {
-                        Console.WriteLine(r.ReadLine());
-                    }
+                    Console.WriteLine(r.ReadLine());
                 }
             }
-            catch (FileNotFoundException x)
-            {
-                Console.WriteLine($"File '{x.FileName}' is missing");
-            }
         }
-
-        static void MultipleCatchBlocks()
+        catch (FileNotFoundException x)
         {
-            try
-            {
-                using (StreamReader r = new StreamReader(@"C:\Temp\File.txt"))
-                {
-                    while (!r.EndOfStream)
-                    {
-                        Console.WriteLine(r.ReadLine());
-                    }
-                }
-            }
-            catch (FileNotFoundException x)
-            {
-                Console.WriteLine($"File '{x.FileName}' is missing");
-            }
-            catch (IOException x)
-            {
-                Console.WriteLine($"IO error: '{x.Message}'");
-            }
+            Console.WriteLine($"File '{x.FileName}' is missing");
         }
-
-        public static bool InsertIfDoesNotExist(MyEntity item, CloudTable table)
+        catch (DirectoryNotFoundException)
         {
-            try
-            {
-                table.Execute(TableOperation.Insert(item));
-                return true;
-            }
-            catch (StorageException x)
-            when (x.RequestInformation.HttpStatusCode == 409)
-            {
-                return false;
-            }
+            Console.WriteLine($"The containing directory does not exist.");
         }
-
-        public static int CountCommas(string text)
+        catch (IOException x)
         {
-            if (text == null)
-            {
-                throw new ArgumentNullException(nameof(text));
-            }
-            return text.Count(ch => ch == ',');
+            Console.WriteLine($"IO error: '{x.Message}'");
         }
+    }
+
+    public static bool InsertIfDoesNotExist(MyEntity item, TableClient table)
+    {
+        try
+        {
+            table.AddEntity(item);
+            return true;
+        }
+        catch (RequestFailedException x)
+        when (x.Status == 409)
+        {
+            return false;
+        }
+    }
+
+    public static string GetCommaSeparatedEntry(string text, int position)
+    {
+        string[] parts = text.Split(',');
+        if (position < 0 || position >= parts.Length)
+        {
+            throw new ArgumentOutOfRangeException(nameof(position));
+        }
+        return parts[position];
+    }
+
+    public static int CountCommas(string text)
+    {
+        ArgumentNullException.ThrowIfNull(text);
+        return text.Count(ch => ch == ',');
     }
 }

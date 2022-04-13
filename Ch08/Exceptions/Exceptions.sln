@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29418.71
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "Exceptions\Exceptions.csproj", "{35973731-3ACA-42A1-9D6D-333E37CF095E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exceptions", "Exceptions\Exceptions.csproj", "{35973731-3ACA-42A1-9D6D-333E37CF095E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NestedExceptions", "NestedExceptions\NestedExceptions.csproj", "{558A2DDB-33FF-4DEE-978C-207A7EF7040D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NestedExceptions", "NestedExceptions\NestedExceptions.csproj", "{558A2DDB-33FF-4DEE-978C-207A7EF7040D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unhandled", "Unhandled\Unhandled.csproj", "{1F0ABFF8-3A91-465C-BAB7-C05EC215C0AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unhandled", "Unhandled\Unhandled.csproj", "{1F0ABFF8-3A91-465C-BAB7-C05EC215C0AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinallyInterop", "FinallyInterop\FinallyInterop.csproj", "{397BB46E-AE53-4A4E-9DFF-DE6F861143B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1F0ABFF8-3A91-465C-BAB7-C05EC215C0AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F0ABFF8-3A91-465C-BAB7-C05EC215C0AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F0ABFF8-3A91-465C-BAB7-C05EC215C0AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397BB46E-AE53-4A4E-9DFF-DE6F861143B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{397BB46E-AE53-4A4E-9DFF-DE6F861143B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{397BB46E-AE53-4A4E-9DFF-DE6F861143B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{397BB46E-AE53-4A4E-9DFF-DE6F861143B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

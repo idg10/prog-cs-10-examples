@@ -1,42 +1,39 @@
-﻿using System.IO;
+﻿namespace Exceptions;
 
-namespace Exceptions
+class Rethrow
 {
-    class Rethrow
+    public static void BadRethrow()
     {
-        public static void BadRethrow()
+        try
         {
-            try
-            {
-                DoSomething();
-            }
-            catch (IOException x)
-            {
-                LogIOError(x);
-                // This next line is BAD!
-                throw x;  // Do not do this
-            }
+            DoSomething();
         }
+        catch (IOException x)
+        {
+            LogIOError(x);
+            // This next line is BAD!
+            throw x;  // Do not do this
+        }
+    }
 
-        public static void GoodRethrow()
+    public static void GoodRethrow()
+    {
+        try
         {
-            try
-            {
-                DoSomething();
-            }
-            catch (IOException x)
-            {
-                LogIOError(x);
-                throw;
-            }
+            DoSomething();
         }
+        catch (IOException x)
+        {
+            LogIOError(x);
+            throw;
+        }
+    }
 
-        private static void DoSomething()
-        {
-        }
+    private static void DoSomething()
+    {
+    }
 
-        private static void LogIOError(IOException x)
-        {
-        }
+    private static void LogIOError(IOException x)
+    {
     }
 }
