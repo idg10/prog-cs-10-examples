@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BasicCoding
+﻿namespace BasicCoding
 {
     internal static class Tuples
     {
@@ -48,6 +46,13 @@ namespace BasicCoding
             Console.WriteLine($"1: {x}, {y}");
             (x, y) = point2;
             Console.WriteLine($"2: {x}, {y}");
+
+            int u;
+            (u, int v) = point1;
+
+            (_, int h) = point1;
+
+            Console.WriteLine($"{u}, {v}, {h}");
         }
     }
 }

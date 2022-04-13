@@ -1,32 +1,30 @@
-﻿using System;
+﻿namespace BasicCoding;
 
-namespace BasicCoding
+internal class PreprocessingDirectives
 {
-    internal class PreprocessingDirectives
+    internal static void ConditionalCompilation()
     {
-        internal static void ConditionalCompilation()
-        {
 #if DEBUG
-            Console.WriteLine("Starting work");
+        Console.WriteLine("Starting work");
 #endif
-            DoWork();
+        DoWork();
 #if DEBUG
-            Console.WriteLine("Finished work");
+        Console.WriteLine("Finished work");
 #endif
-        }
+    }
 
-        [System.Diagnostics.Conditional("DEBUG")]
-        static void ShowDebugInfo(object o)
-        {
-            Console.WriteLine(o);
-        }
+    [System.Diagnostics.Conditional("DEBUG")]
+    static void ShowDebugInfo(object o)
+    {
+        Console.WriteLine(o);
+    }
 
-        internal static void ErrorDirective()
-        {
+    internal static void ErrorDirective()
+    {
 #if NETSTANDARD
-    #error .NET Standard is not a supported target for this source file
+  #error .NET Standard is not a supported target for this source file
 #endif
-        }
+    }
 
 // To see the compiler error for Example 31, change this:
 #if false
@@ -34,14 +32,13 @@ namespace BasicCoding
 // #if true
 
 #line 123 "Foo.cs"
-        intt x;
+    intt x;
 #endif
 
 #pragma warning disable CS0168
-        int a;
+    int a;
 
-        private static void DoWork() { }
+    private static void DoWork() { }
 
-        internal static void AvoidUnusedMethodWarning() => ShowDebugInfo("");
-    }
+    internal static void AvoidUnusedMethodWarning() => ShowDebugInfo("");
 }

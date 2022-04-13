@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BasicCoding
+﻿namespace BasicCoding
 {
     internal static class Operators
     {
