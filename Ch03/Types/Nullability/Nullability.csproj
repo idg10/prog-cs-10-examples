@@ -2,12 +2,20 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+    <!--
+    IDE0060 - Remove unused parameter
+    The example that provokes this warning only shows the declaration line in
+    the book - the method body is irrelevant. So it's not a problem that the
+    parameter is unused.
+    -->
     <NoWarn>IDE0060</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Nullable>warnings</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
 </Project>

@@ -2,7 +2,22 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    
+    <!--
+    IDE0090 - 'new' expression can be simplified
+    Both the places this warning shows up are where we're deliberately doing
+    something slightly odd: using "new int()", and the text in the book calls
+    that out. It's to illustrate a point, so we don't want the compiler
+    warning.
+    
+    CA1050 - declare types in namespaces
+    For real projects we'd want this warning, but for book examples, the
+    succinctness of not using namespaces is handy.
+    -->
+    <NoWarn>IDE0090;CA1050</NoWarn>
   </PropertyGroup>
 
 </Project>

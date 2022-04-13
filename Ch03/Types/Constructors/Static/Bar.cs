@@ -1,14 +1,11 @@
-﻿using System;
+﻿namespace Constructors.Static;
 
-namespace Constructors.Static
+public class Bar
 {
-    public class Bar
+    private static DateTime _firstUsed;
+    static Bar()
     {
-        private static DateTime _firstUsed;
-        static Bar()
-        {
-            Console.WriteLine("Bar's static constructor");
-            _firstUsed = DateTime.Now;
-        }
+        Console.WriteLine("Bar's static constructor");
+        _firstUsed = DateTime.Now;
     }
 }

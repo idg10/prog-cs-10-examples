@@ -1,10 +1,6 @@
-﻿namespace MyApplication
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            "Hello".Show();
-        }
-    }
-}
+﻿using MyApplication;
+
+using Other;
+
+Showy.Greet();
+Vocal.Hail();

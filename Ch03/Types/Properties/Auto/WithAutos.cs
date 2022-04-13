@@ -1,16 +1,15 @@
-﻿namespace Properties.Auto
+﻿namespace Properties.Auto;
+
+public class WithAutos
 {
-    public class WithAutos
+    public int X { get; } = 42;
+
+    public WithAutos()
     {
-        public int X { get; } = 42;
+    }
 
-        public WithAutos()
-        {
-        }
-
-        public WithAutos(int val)
-        {
-            X = val;
-        }
+    public WithAutos(int val)
+    {
+        X = val;
     }
 }

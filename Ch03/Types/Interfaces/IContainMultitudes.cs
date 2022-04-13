@@ -1,18 +1,17 @@
-﻿namespace Interfaces
+﻿namespace Interfaces;
+
+public interface IContainMultitudes
 {
-    public interface IContainMultitudes
+    public const string TheMagicWord = "Please";
+
+    public enum Outcome
     {
-        public const string TheMagicWord = "Please";
+        Yes,
+        No
+    }
 
-        public enum Outcome
-        {
-            Yes,
-            No
-        }
-
-        Outcome MayI(string request)
-        {
-            return request == TheMagicWord ? Outcome.Yes : Outcome.No;
-        }
+    Outcome MayI(string request)
+    {
+        return request == TheMagicWord ? Outcome.Yes : Outcome.No;
     }
 }

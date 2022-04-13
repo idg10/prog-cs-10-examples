@@ -1,19 +1,16 @@
-﻿using System;
+﻿namespace Properties.Simple;
 
-namespace Properties.Simple
+public class Calculated
 {
-    public class Calculated
-    {
-        public double X { get; set; }
-        
-        public double Y { get; set; }
+    public double X { get; set; }
 
-        public double Magnitude
+    public double Y { get; set; }
+
+    public double Magnitude
+    {
+        get
         {
-            get
-            {
-                return Math.Sqrt(X * X + Y * Y);
-            }
+            return Math.Sqrt(X * X + Y * Y);
         }
     }
 }

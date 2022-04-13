@@ -1,11 +1,10 @@
-﻿namespace Properties.ByRef
+﻿namespace Properties.ByRef;
+
+using System.Windows;
+
+public class Item
 {
-    using System.Windows;
+    private Point _location;
 
-    public class Item
-    {
-        private Point _location;
-
-        public ref Point Location => ref _location;
-    }
+    public ref Point Location => ref _location;
 }

@@ -1,18 +1,17 @@
-﻿namespace Properties.Simple
+﻿namespace Properties.Simple;
+
+public class HasProperty
 {
-    public class HasProperty
+    private int _x;
+    public int X
     {
-        private int _x;
-        public int X
+        get
         {
-            get
-            {
-                return _x;
-            }
-            set
-            {
-                _x = value;
-            }
+            return _x;
+        }
+        set
+        {
+            _x = value;
         }
     }
 }

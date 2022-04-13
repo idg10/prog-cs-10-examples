@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!--
+    CA1050 - declare types in namespaces
+    For real projects we'd want this warning, but for book examples, the
+    succinctness of not using namespaces is handy.
+    -->
+    <NoWarn>CA1050</NoWarn>
+  </PropertyGroup>
+
+</Project>

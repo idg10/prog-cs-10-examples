@@ -1,6 +1,6 @@
 ﻿namespace Structs
 {
-    public struct Point
+    public struct Point : IEquatable<Point>
     {
         private double _x;
         private double _y;
@@ -13,24 +13,11 @@
         public double X => _x;
         public double Y => _y;
 
-        public static bool operator ==(Point p1, Point p2)
-        {
-            return p1.X == p2.X && p1.Y == p2.Y;
-        }
+        public bool Equals(Point o) => this.X == o.X && this.Y == o.Y;
+        public override bool Equals(object? o) => o is Point p && this.Equals(p);
+        public override int GetHashCode() => HashCode.Combine(X, Y);
 
-        public static bool operator !=(Point p1, Point p2)
-        {
-            return p1.X != p2.X || p1.Y != p2.Y;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return obj is Point p2 && this.X == p2.X && this.Y == p2.Y;
-        }
-
-        public override int GetHashCode()
-        {
-            return (X, Y).GetHashCode();
-        }
+        public static bool operator ==(Point a, Point b) => a.Equals(b);
+        public static bool operator !=(Point a, Point b) => !(a == b);
     }
 }

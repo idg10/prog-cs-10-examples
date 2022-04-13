@@ -1,13 +1,10 @@
-﻿using System;
+﻿namespace Properties.ExpressionBodied;
 
-namespace Properties.ExpressionBodied
+public class Calculated
 {
-    public class Calculated
-    {
-        public double X { get; set; }
-        
-        public double Y { get; set; }
+    public double X { get; set; }
 
-        public double Magnitude => Math.Sqrt(X * X + Y * Y);
-    }
+    public double Y { get; set; }
+
+    public double Magnitude => Math.Sqrt(X * X + Y * Y);
 }

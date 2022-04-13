@@ -1,11 +1,3 @@
-﻿using System;
+﻿using ReadOnlyStructs;
 
-namespace ReadOnlyStructs
-{
-    class Program
-    {
-        static void Main()
-        {
-        }
-    }
-}
+Console.WriteLine(new Point(10, 20));

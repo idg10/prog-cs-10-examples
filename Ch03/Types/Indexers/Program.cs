@@ -1,32 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿var numbers = new List<int> { 1, 2, 1, 4 };
+numbers[2] += numbers[1];
+Console.WriteLine(numbers[0]);
 
-namespace Indexers
+NullConditionalIndex(null);
+EquivalentOfNullConditionalIndex(null);
+
+static void NullConditionalIndex(List<string>? objectWithIndexer)
 {
-    class Program
-    {
-        static void Main()
-        {
-            var numbers = new List<int> { 1, 2, 1, 4 };
-            numbers[2] += numbers[1];
-            Console.WriteLine(numbers[0]);
+    string? s = objectWithIndexer?[2];
 
-            NullConditionalIndex(null);
-            EquivalentOfNullConditionalIndex(null);
-        }
+    Console.WriteLine(s ?? "Null");
+}
 
-        private static void NullConditionalIndex(List<string>? objectWithIndexer)
-        {
-            string? s = objectWithIndexer?[2];
+static void EquivalentOfNullConditionalIndex(List<string>? objectWithIndexer)
+{
+    string? s = objectWithIndexer == null ? null : objectWithIndexer[2];
 
-            Console.WriteLine(s ?? "Null");
-        }
-
-        private static void EquivalentOfNullConditionalIndex(List<string>? objectWithIndexer)
-        {
-            string? s = objectWithIndexer == null ? null : objectWithIndexer[2];
-
-            Console.WriteLine(s ?? "Null");
-        }
-    }
+    Console.WriteLine(s ?? "Null");
 }

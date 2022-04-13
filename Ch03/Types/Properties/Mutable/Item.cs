@@ -1,9 +1,8 @@
-﻿namespace Properties.Mutable
-{
-    using System.Windows;
+﻿namespace Properties.Mutable;
 
-    public class Item
-    {
-        public Point Location { get; set; }
-   }
+using System.Windows;
+
+public class Item
+{
+    public Point Location { get; set; }
 }

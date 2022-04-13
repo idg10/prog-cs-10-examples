@@ -1,14 +1,13 @@
-﻿namespace Properties.ByRef
-{
-    using System.Windows;
+﻿namespace Properties.ByRef;
 
-    class UseItem
+using System.Windows;
+
+class UseItem
+{
+    public static void CompilesButProbablyNotAGoodIdea()
     {
-        public static void CompilesButProbablyNotAGoodIdea()
-        {
-            var item = new Item();
-            Point location = item.Location;
-            location.X = 123;
-        }
+        var item = new Item();
+        Point location = item.Location;
+        location.X = 123;
     }
 }

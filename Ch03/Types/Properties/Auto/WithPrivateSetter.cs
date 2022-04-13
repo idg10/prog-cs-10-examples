@@ -1,17 +1,16 @@
-﻿namespace Properties.Auto
+﻿namespace Properties.Auto;
+
+public class WithPrivateSetter
 {
-    public class WithPrivateSetter
+    public WithPrivateSetter(int x)
     {
-        public WithPrivateSetter(int x)
-        {
-            this.X = x;
-        }
+        this.X = x;
+    }
 
-        public int X { get; private set; }
+    public int X { get; private set; }
 
-        public void MoveLeft(int by)
-        {
-            this.X -= by;
-        }
+    public void MoveLeft(int by)
+    {
+        this.X -= by;
     }
 }

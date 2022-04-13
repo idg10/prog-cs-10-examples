@@ -1,12 +1,11 @@
-﻿namespace Properties.ExpressionBodied
+﻿namespace Properties.ExpressionBodied;
+
+public class HasProperty
 {
-    public class HasProperty
+    private int _x;
+    public int X
     {
-        private int _x;
-        public int X
-        {
-            get => _x;
-            set => _x = value;
-        }
+        get => _x;
+        set => _x = value;
     }
 }

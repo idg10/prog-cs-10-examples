@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Fields
+﻿namespace Fields
 {
     class Program
     {

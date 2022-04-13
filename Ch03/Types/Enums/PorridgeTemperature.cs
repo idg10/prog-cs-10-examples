@@ -1,9 +1,8 @@
-﻿namespace Enums
+﻿namespace Enums;
+
+public enum PorridgeTemperature
 {
-    public enum PorridgeTemperature
-    {
-        TooHot,
-        TooCold,
-        JustRight
-    }
+    TooHot,
+    TooCold,
+    JustRight
 }

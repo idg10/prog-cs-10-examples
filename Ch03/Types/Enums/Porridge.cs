@@ -1,7 +1,6 @@
-﻿namespace Enums
+﻿namespace Enums;
+
+public class Porridge
 {
-    public class Porridge
-    {
-        public PorridgeTemperature Temperature { get; set; }
-    }
+    public PorridgeTemperature Temperature { get; set; }
 }

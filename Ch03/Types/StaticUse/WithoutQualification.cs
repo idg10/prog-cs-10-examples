@@ -1,9 +1,9 @@
 ﻿using static System.Console;
 using static System.Math;
 
-class Program
+public static class WithoutQualification
 {
-    static void Main(string[] args)
+    public static void UseStatics()
     {
         WriteLine(Sin(PI / 4));
     }

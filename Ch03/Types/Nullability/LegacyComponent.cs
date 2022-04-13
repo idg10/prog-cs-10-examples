@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿#nullable disable
 
-#nullable disable
+namespace Nullability;
 
-namespace Nullability
+internal class LegacyComponent
 {
-    internal class LegacyComponent
-    {
-        public string GetReferenceWeKnowWontBeNull() => "Definitely not null";
-    }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "Performance",
+        "CA1822:Mark members as static",
+        Justification = "Not real code - this is here to illustrate something in a different file, and we need this to be an instance member")]
+    public string GetReferenceWeKnowWontBeNull() => "Definitely not null";
 }

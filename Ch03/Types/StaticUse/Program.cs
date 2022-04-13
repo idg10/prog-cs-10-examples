@@ -1,0 +1,2 @@
+﻿Normal.UseStatics();
+WithoutQualification.UseStatics();

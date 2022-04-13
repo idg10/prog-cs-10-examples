@@ -2,7 +2,16 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!--
+    CA2211 - Non-constant fields should not be visible
+    Since the entire purpose of this example is to show how field
+    initialization operates, it's reasonable for these to be visible.
+    -->
+    <NoWarn>CA2211</NoWarn>
   </PropertyGroup>
 
 </Project>

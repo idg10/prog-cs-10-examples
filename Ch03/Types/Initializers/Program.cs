@@ -1,34 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-namespace Initializers
+Process.Start(new ProcessStartInfo
 {
-    class Program
-    {
-        static void Main()
-        {
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = "cmd.exe",
-                UseShellExecute = true,
-                WindowStyle = ProcessWindowStyle.Maximized,
-            });
+    FileName = "cmd.exe",
+    UseShellExecute = true,
+    WindowStyle = ProcessWindowStyle.Maximized,
+});
 
-            Process.Start(new ProcessStartInfo("cmd.exe")
-            {
-                UseShellExecute = true,
-                WindowStyle = ProcessWindowStyle.Maximized,
-            });
+Process.Start(new ProcessStartInfo("cmd.exe")
+{
+    UseShellExecute = true,
+    WindowStyle = ProcessWindowStyle.Maximized,
+});
 
-            var d = new Dictionary<string, int>
-            {
-                ["One"] = 1,
-                ["Two"] = 2,
-                ["Three"] = 3
-            };
+var d = new Dictionary<string, int>
+{
+    ["One"] = 1,
+    ["Two"] = 2,
+    ["Three"] = 3
+};
 
-            Console.WriteLine(d["One"]);
-        }
-    }
-}
+Console.WriteLine(d["One"]);

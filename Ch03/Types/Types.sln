@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29418.71
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Classes", "Classes\Classes.csproj", "{9C42F3B3-0B81-4165-A825-DBF253C86510}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassWithStaticMembers", "ClassWithStaticMembers\ClassWithStaticMembers.csproj", "{B4064693-B857-45CC-8C74-65C197A36BC5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaticUseNormal", "StaticUseNormal\StaticUseNormal.csproj", "{FAF71201-DC4F-4C01-AE70-99FF99753297}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaticUseWithoutQualification", "StaticUseWithoutQualification\StaticUseWithoutQualification.csproj", "{382C2C59-8387-416B-8D2F-9D0B9A21D9B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaticUse", "StaticUse\StaticUse.csproj", "{FAF71201-DC4F-4C01-AE70-99FF99753297}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReferenceTypes", "ReferenceTypes\ReferenceTypes.csproj", "{E1453FEB-6C62-436A-932B-23B44EF07B62}"
 EndProject
@@ -33,21 +31,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Methods", "Methods\Methods.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionMethods", "ExtensionMethods\ExtensionMethods.csproj", "{AEA64B27-7820-462B-9036-1BD6FD425CE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Properties", "Properties\Properties.csproj", "{502D5618-8A69-43F2-88BA-DD8236E030EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Properties", "Properties\Properties.csproj", "{502D5618-8A69-43F2-88BA-DD8236E030EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexers", "Indexers\Indexers.csproj", "{FA9F31A6-2017-40DC-BBAD-5C3E445157C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Indexers", "Indexers\Indexers.csproj", "{FA9F31A6-2017-40DC-BBAD-5C3E445157C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Initializers", "Initializers\Initializers.csproj", "{8E323DA9-CC9F-49F5-967B-295AE07AF1DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Initializers", "Initializers\Initializers.csproj", "{8E323DA9-CC9F-49F5-967B-295AE07AF1DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operators", "Operators\Operators.csproj", "{12F1E8BF-36BA-4815-9DBF-5B96735CBFA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Operators", "Operators\Operators.csproj", "{12F1E8BF-36BA-4815-9DBF-5B96735CBFA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NestedTypes", "NestedTypes\NestedTypes.csproj", "{EC12E72D-AC18-4385-84E7-0BA2D65E18D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NestedTypes", "NestedTypes\NestedTypes.csproj", "{EC12E72D-AC18-4385-84E7-0BA2D65E18D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{D81D21A6-A2A3-4939-BA59-3A8DDDBBD4D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\Interfaces.csproj", "{D81D21A6-A2A3-4939-BA59-3A8DDDBBD4D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enums", "Enums\Enums.csproj", "{E8D01198-C64C-49C4-BC7B-D68AE6B78FD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enums", "Enums\Enums.csproj", "{E8D01198-C64C-49C4-BC7B-D68AE6B78FD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnonymousTypes", "AnonymousTypes\AnonymousTypes.csproj", "{A75C5AA5-757E-427E-9A63-EE1E68198C44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnonymousTypes", "AnonymousTypes\AnonymousTypes.csproj", "{A75C5AA5-757E-427E-9A63-EE1E68198C44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Records", "Records\Records.csproj", "{3400334C-D27C-4E14-9111-2B2EE5FD384F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,10 +67,6 @@ Global
 		{FAF71201-DC4F-4C01-AE70-99FF99753297}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAF71201-DC4F-4C01-AE70-99FF99753297}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAF71201-DC4F-4C01-AE70-99FF99753297}.Release|Any CPU.Build.0 = Release|Any CPU
-		{382C2C59-8387-416B-8D2F-9D0B9A21D9B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{382C2C59-8387-416B-8D2F-9D0B9A21D9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{382C2C59-8387-416B-8D2F-9D0B9A21D9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{382C2C59-8387-416B-8D2F-9D0B9A21D9B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E1453FEB-6C62-436A-932B-23B44EF07B62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E1453FEB-6C62-436A-932B-23B44EF07B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1453FEB-6C62-436A-932B-23B44EF07B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -147,6 +143,10 @@ Global
 		{A75C5AA5-757E-427E-9A63-EE1E68198C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A75C5AA5-757E-427E-9A63-EE1E68198C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A75C5AA5-757E-427E-9A63-EE1E68198C44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3400334C-D27C-4E14-9111-2B2EE5FD384F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3400334C-D27C-4E14-9111-2B2EE5FD384F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3400334C-D27C-4E14-9111-2B2EE5FD384F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3400334C-D27C-4E14-9111-2B2EE5FD384F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

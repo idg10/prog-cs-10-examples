@@ -2,7 +2,15 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!--
+    IDE0044 - Make field readonly
+    The offending example is from a point in the book where we've not yet
+    introduced the readonly keyword.
+    -->
     <NoWarn>IDE0044</NoWarn>
   </PropertyGroup>
 
