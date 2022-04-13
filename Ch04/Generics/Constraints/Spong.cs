@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Constraints;
 
-namespace Constraints
+public class Spong<T>
+    where T : IEnumerable<T>, IDisposable, new()
 {
-    public class Spong<T>
-        where T : IEnumerable<T>, IDisposable, new()
-    {
-    }
 }

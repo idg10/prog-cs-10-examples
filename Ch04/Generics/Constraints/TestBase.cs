@@ -1,20 +1,19 @@
-﻿namespace Constraints
+﻿namespace Constraints;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+
+public class TestBase<TSubject, TFake>
+    where TSubject : new()
+    where TFake : class
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Moq;
+    public TSubject? Subject { get; private set; }
+    public Mock<TFake>? Fake { get; private set; }
 
-    public class TestBase<TSubject, TFake>
-        where TSubject : new()
-        where TFake : class
+    [TestInitialize]
+    public void Initialize()
     {
-        public TSubject Subject { get; private set; }
-        public Mock<TFake> Fake { get; private set; }
-
-        [TestInitialize]
-        public void Initialize()
-        {
-            Subject = new TSubject();
-            Fake = new Mock<TFake>();
-        }
+        Subject = new TSubject();
+        Fake = new Mock<TFake>();
     }
 }

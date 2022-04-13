@@ -1,7 +1,6 @@
-﻿namespace Constraints
+﻿namespace Constraints;
+
+public class Quux<T>
+    where T : struct
 {
-    public class Quux<T>
-        where T : struct
-    {
-    }
 }

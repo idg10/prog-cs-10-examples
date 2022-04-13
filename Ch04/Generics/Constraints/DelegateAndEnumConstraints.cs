@@ -1,14 +1,11 @@
-﻿using System;
+﻿namespace Constraints;
 
-namespace Constraints
+public class RequireDelegate<T>
+    where T : Delegate
 {
-    public class RequireDelegate<T>
-        where T : Delegate
-    {
-    }
+}
 
-    public class RequireEnum<T>
-        where T : Enum
-    {
-    }
+public class RequireEnum<T>
+    where T : Enum
+{
 }

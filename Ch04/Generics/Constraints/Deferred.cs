@@ -1,21 +1,20 @@
-﻿namespace Constraints
-{
-    // For illustration only. Consider using Lazy<T> in a real program.
-    public static class Deferred<T>
-        where T : new()
-    {
-        private static T _instance;
+﻿namespace Constraints;
 
-        public static T Instance
+// For illustration only. Consider using Lazy<T> in a real program.
+public static class Deferred<T>
+    where T : new()
+{
+    private static T? _instance;
+
+    public static T Instance
+    {
+        get
         {
-            get
+            if (_instance == null)
             {
-                if (_instance == null)
-                {
-                    _instance = new T();
-                }
-                return _instance;
+                _instance = new T();
             }
+            return _instance;
         }
     }
 }

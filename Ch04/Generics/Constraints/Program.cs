@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace Constraints;
 
-namespace Constraints
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main()
-        {
-        }
     }
 }
