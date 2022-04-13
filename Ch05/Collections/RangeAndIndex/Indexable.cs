@@ -1,9 +1,8 @@
-﻿namespace RangeAndIndex
-{
-    public class Indexable
-    {
-        public char this[int index] => (char)('0' + index);
+﻿namespace RangeAndIndex;
 
-        public int Length => 10;
-    }
+public class Indexable
+{
+    public char this[int index] => (char)('0' + index);
+
+    public int Length => 10;
 }

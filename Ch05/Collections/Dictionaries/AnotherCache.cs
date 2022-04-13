@@ -1,15 +1,11 @@
-﻿using System.Collections.Generic;
+﻿namespace Dictionaries;
 
-namespace Dictionaries
+public class AnotherCache
 {
-    public class AnotherCache
-    {
-        private readonly Dictionary<string, UserInfo> _cachedUserInfo =
-            new Dictionary<string, UserInfo>();
+    private readonly Dictionary<string, UserInfo> _cachedUserInfo = new ();
 
-        public void UseCache(string userHandle)
-        {
-            UserInfo info = _cachedUserInfo[userHandle];
-        }
+    public void UseCache(string userHandle)
+    {
+        UserInfo info = _cachedUserInfo[userHandle];
     }
 }
