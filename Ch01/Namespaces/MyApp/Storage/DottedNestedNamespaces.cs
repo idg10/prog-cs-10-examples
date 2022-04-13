@@ -1,6 +1,5 @@
-﻿namespace MyApp.Storage
+﻿namespace MyApp.Storage;
+
+class DottedNestedNamespaces
 {
-    class DottedNestedNamespaces
-    {
-    }
 }
