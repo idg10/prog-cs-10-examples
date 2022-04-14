@@ -2,11 +2,16 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-  </PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-  </ItemGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!--
+    SYSLIB0011 - BinaryFormatter obsolete
+    The point of the relevant example is to illustrate it!
+    -->
+    <NoWarn>SYSLIB0011</NoWarn>
+  </PropertyGroup>
 
 </Project>

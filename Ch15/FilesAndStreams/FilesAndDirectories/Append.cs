@@ -1,45 +1,42 @@
-﻿using System.IO;
+﻿namespace FilesAndDirectories;
 
-namespace FilesAndDirectories
+class Append
 {
-    class Append
+    class WithStreamWriter
     {
-        class WithStreamWriter
+        static void Log(string message)
         {
-            static void Log(string message)
+            using (var sw = new StreamWriter(@"c:\temp\log.txt", true))
             {
-                using (var sw = new StreamWriter(@"c:\temp\log.txt", true))
-                {
-                    sw.WriteLine(message);
-                }
+                sw.WriteLine(message);
             }
         }
+    }
 
-        class WithFileAppendText
+    class WithFileAppendText
+    {
+        static void Log(string message)
         {
-            static void Log(string message)
+            using (StreamWriter sw = File.AppendText(@"c:\temp\log.txt"))
             {
-                using (StreamWriter sw = File.AppendText(@"c:\temp\log.txt"))
-                {
-                    sw.WriteLine(message);
-                }
+                sw.WriteLine(message);
             }
         }
+    }
 
-        class WithFileAppendAllText
+    class WithFileAppendAllText
+    {
+        static void Log(string message)
         {
-            static void Log(string message)
-            {
-                File.AppendAllText(@"c:\temp\log.txt", message);
-            }
+            File.AppendAllText(@"c:\temp\log.txt", message);
         }
+    }
 
-        class WithFileAppendAllLines
+    class WithFileAppendAllLines
+    {
+        static void Log(string message)
         {
-            static void Log(string message)
-            {
-                File.AppendAllLines(@"c:\temp\log.txt", new[] { message });
-            }
+            File.AppendAllLines(@"c:\temp\log.txt", new[] { message });
         }
     }
 }

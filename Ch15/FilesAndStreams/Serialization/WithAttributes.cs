@@ -1,19 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
-namespace Serialization
+namespace Serialization;
+
+public class WithAttributes
 {
-    public class WithAttributes
+    public class NestedData
     {
-        public class NestedData
-        {
-            [JsonProperty("locationName")]
-            public string LocationName { get; set; }
+        [JsonPropertyName("locationName")]
+        public string? LocationName { get; set; }
 
-            [JsonProperty("latitude")]
-            public double Latitude { get; set; }
+        [JsonPropertyName("latitude")]
+        public double Latitude { get; set; }
 
-            [JsonProperty("longitude")]
-            public double Longitude { get; set; }
-        }
+        [JsonPropertyName("longitude")]
+        public double Longitude { get; set; }
     }
 }

@@ -4,7 +4,7 @@
     {
         static void Main()
         {
-            JsonDotNet.Use();
+            SystemTextJson.Use();
         }
     }
 }
