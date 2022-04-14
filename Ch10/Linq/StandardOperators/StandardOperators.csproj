@@ -5,10 +5,10 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <NoWarn>IDE0051</NoWarn>
 
-	<ImplicitUsings>enable</ImplicitUsings>
-	<Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
 
-	<!-- One of the examples uses the Rect type -->
+    <!-- One of the examples uses the Rect type -->
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 

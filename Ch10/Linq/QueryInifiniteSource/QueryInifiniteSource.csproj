@@ -3,18 +3,18 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-	<Nullable>enable</Nullable>
-	<!--
-	By default, new .NET 6.0 projects have this line:
-	
-	<ImplicitUsings>enable</ImplicitUsings>
-	
-	I'm not using it because one of these examples is unusual in that the book
-	shows the whole file include using directives. This is because I wanted to
-	show which namespaces the code uses.
-	-->
+    <Nullable>enable</Nullable>
+    <!--
+    By default, new .NET 6.0 projects have this line:
+    
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+    I'm not using it because one of these examples is unusual in that the book
+    shows the whole file include using directives. This is because I wanted to
+    show which namespaces the code uses.
+    -->
 
-	<NoWarn>IDE0060</NoWarn>
+    <NoWarn>IDE0060</NoWarn>
   </PropertyGroup>
 
 </Project>

@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
 
     <!--
-    IDE0062	Local function can be made static
+    IDE0062 - Local function can be made static
     This is due to the Discount method in Program.cs. It is just for illustration,
     so making it static would just add meaningless clutter.
     -->
