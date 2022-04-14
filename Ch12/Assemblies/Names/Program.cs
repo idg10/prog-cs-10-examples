@@ -1,16 +1,14 @@
-﻿using System;
-using System.Resources;
+﻿using System.Resources;
 
-namespace ResourceExample
+namespace ResourceExample;
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var rm = new ResourceManager(
-                "ResourceExample.MyResources", typeof(Program).Assembly);
-            string colText = rm.GetString("ColString");
-            Console.WriteLine("And now in " + colText);
-        }
+        var rm = new ResourceManager(
+            "ResourceExample.MyResources", typeof(Program).Assembly);
+        string colText = rm.GetString("ColString")!;
+        Console.WriteLine("And now in " + colText);
     }
 }

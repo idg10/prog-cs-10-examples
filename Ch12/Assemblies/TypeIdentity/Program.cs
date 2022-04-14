@@ -12,9 +12,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        System.String s = null;
+        System.String? s = null;
         ShowStaticTypeNameAndAssembly(s);
-        string s2 = null;
+        string? s2 = null;
         ShowStaticTypeNameAndAssembly(s2);
         ShowStaticTypeNameAndAssembly("String literal");
         ShowStaticTypeNameAndAssembly(Environment.OSVersion.VersionString);

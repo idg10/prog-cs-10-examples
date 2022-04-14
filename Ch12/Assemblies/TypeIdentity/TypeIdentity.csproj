@@ -2,7 +2,23 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    
+    <!--
+    Normally .NET 6.0 projects include this:
+    
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+    However, the only source file in this project is one where we want to show
+    some things about namespaces, so we don't want implicit usings enabled.
+    -->
+    
+    <Nullable>enable</Nullable>
+
+    <!--
+    CS0436 will warn us that our program's String type clashes with the real one.
+    The IDE0060 warnings are about unused arguments, which we want to ignore in these examples.
+    -->
     <NoWarn>CS0436;IDE0060</NoWarn>
   </PropertyGroup>
 

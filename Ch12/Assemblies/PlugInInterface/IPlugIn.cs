@@ -1,10 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 
-namespace PlugInInterface
+namespace PlugInInterface;
+
+public interface IPlugIn
 {
-    public interface IPlugIn
-    {
-        string Foo(JObject o);
-    }
+    string Foo(JObject o);
 }
