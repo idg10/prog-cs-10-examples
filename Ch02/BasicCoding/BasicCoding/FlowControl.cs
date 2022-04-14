@@ -192,9 +192,9 @@ internal static class FlowControl
         }
     }
 
-    private static void TurnOnMissileLaunchedIndicator() => Console.WriteLine("Awhoogha!");
+    private static void SendTransferConfirmation() => Console.WriteLine("Sending transfer confirmation");
 
-    private static void LaunchMissiles() => Console.WriteLine("Fwoom!");
+    private static void TransferFunds() => Console.WriteLine("Transferring funds");
 
     private static void WorkDiligently() => Console.WriteLine("Makes Jack a dull boy");
 

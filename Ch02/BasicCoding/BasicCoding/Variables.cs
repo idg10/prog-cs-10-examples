@@ -111,10 +111,6 @@ internal static class Variables
     }
 #endif
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "Style",
-        "IDE0059:Unnecessary assignment of a value",
-        Justification = "Example shows two ways to assign a value to a variable, so this unnecessary assignment is inevitable")]
     internal static void UsingVariables()
     {
         string part1 = "the ultimate question";

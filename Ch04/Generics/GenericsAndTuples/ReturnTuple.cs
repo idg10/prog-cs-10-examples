@@ -2,5 +2,5 @@
 
 public class ReturnTuple
 {
-    public (int X, int Y) Pos() => (10, 20);
+    public static (int X, int Y) Pos() => (10, 20);
 }

@@ -175,7 +175,6 @@ internal static class Patterns
         };
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "Example doesn't actually used its outputs")]
     internal static void IsExpression(object value)
     {
         bool isPoint = value is (int, int);

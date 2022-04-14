@@ -42,7 +42,6 @@ internal static class Conversions
         Console.WriteLine(totalTicks);
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "These examples just illustrate syntax")]
     internal static void CheckedExpressions()
     {
         int a = 2_000_000_000;

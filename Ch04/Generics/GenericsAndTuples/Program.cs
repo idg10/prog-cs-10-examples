@@ -6,4 +6,4 @@ ValueTuple<int, int> p2 = (42, 99);
 
 Console.WriteLine(p);
 Console.WriteLine(p2);
-Console.WriteLine(new ReturnTuple().Pos());
+Console.WriteLine(ReturnTuple.Pos());

@@ -13,7 +13,7 @@ class Program
         UseInference();
     }
 
-    public static T GetLast<T>(T[] items) => items[items.Length - 1];
+    public static T GetLast<T>(T[] items) => items[^1];
 
     public static T MakeFake<T>()
         where T : class
