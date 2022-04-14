@@ -1,4 +1,4 @@
-# Examples from Programming C# 8.0 (O'Reilly)
+# Examples from Programming C# 10.0 (O'Reilly)
 
 [Chapter 1 - Introducing C#](Ch01/Ch01.md)
 
