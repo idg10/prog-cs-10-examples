@@ -1,35 +1,33 @@
 ﻿using System.Net.Http;
-using System.Threading.Tasks;
 using System.Windows;
 
-namespace TplSchedulers
+namespace TplSchedulers;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
+        InitializeComponent();
+    }
+
+    private static readonly HttpClient w = new();
+    private readonly TaskScheduler _uiScheduler =
+        TaskScheduler.FromCurrentSynchronizationContext();
+
+    private void FetchButtonClicked(object sender, RoutedEventArgs e)
+    {
+        string url = "https://endjin.com/";
+        Task<string> webGetTask = w.GetStringAsync(url);
+
+        webGetTask.ContinueWith(t =>
         {
-            InitializeComponent();
-        }
+            string webContent = t.Result;
+            outputTextBox.Text = webContent;
+        },
+        _uiScheduler);
 
-        private static readonly HttpClient w = new HttpClient();
-        private readonly TaskScheduler _uiScheduler =
-            TaskScheduler.FromCurrentSynchronizationContext();
-
-        private void FetchButtonClicked(object sender, RoutedEventArgs e)
-        {
-            string url = "https://endjin.com/";
-            Task<string> webGetTask = w.GetStringAsync(url);
-
-            webGetTask.ContinueWith(t =>
-            {
-                string webContent = t.Result;
-                outputTextBox.Text = webContent;
-            },
-            _uiScheduler);
-
-        }
     }
 }

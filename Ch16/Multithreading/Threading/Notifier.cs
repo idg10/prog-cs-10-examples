@@ -1,37 +1,31 @@
-﻿using System;
-using System.Threading;
+﻿namespace Threading;
 
-namespace Threading
+class Notifier
 {
-    class Notifier
+    private readonly Action _callback;
+    private readonly ThreadLocal<bool> _isCallbackInProgress = new();
+
+    public Notifier(Action callback)
     {
-        private readonly ThreadLocal<bool> _isCallbackInProgress =
-            new ThreadLocal<bool>();
+        _callback = callback;
+    }
 
-        private readonly Action _callback;
-
-        public Notifier(Action callback)
+    public void Notify()
+    {
+        if (_isCallbackInProgress.Value)
         {
-            _callback = callback;
+            throw new InvalidOperationException(
+                "Notification already in progress on this thread");
         }
 
-        public void Notify()
+        try
         {
-            if (_isCallbackInProgress.Value)
-            {
-                throw new InvalidOperationException(
-                    "Notification already in progress on this thread");
-            }
-
-            try
-            {
-                _isCallbackInProgress.Value = true;
-                _callback();
-            }
-            finally
-            {
-                _isCallbackInProgress.Value = false;
-            }
+            _isCallbackInProgress.Value = true;
+            _callback();
+        }
+        finally
+        {
+            _isCallbackInProgress.Value = false;
         }
     }
 }

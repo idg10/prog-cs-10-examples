@@ -1,20 +1,17 @@
-﻿using System.Threading;
+﻿namespace Synchronization;
 
-namespace Synchronization
+class UsingCompareExchange
 {
-    class UsingCompareExchange
+    static int InterlockedIncrement(ref int target)
     {
-        static int InterlockedIncrement(ref int target)
+        int current, newValue;
+        do
         {
-            int current, newValue;
-            do
-            {
-                current = target;
-                newValue = current + 1;
-            }
-            while (Interlocked.CompareExchange(ref target, newValue, current)
-                    != current);
-            return newValue;
+            current = target;
+            newValue = current + 1;
         }
+        while (Interlocked.CompareExchange(ref target, newValue, current)
+                != current);
+        return newValue;
     }
 }

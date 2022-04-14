@@ -1,32 +1,28 @@
-﻿using System;
-using System.Net;
-using System.Threading;
+﻿namespace CreatingThreads;
 
-namespace CreatingThreads
+internal static class Program
 {
-    class Program
+    private static readonly HttpClient http = new();
+
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            var t1 = new Thread(MyThreadEntryPoint);
-            var t2 = new Thread(MyThreadEntryPoint);
-            var t3 = new Thread(MyThreadEntryPoint);
+        Thread t1 = new(MyThreadEntryPoint);
+        Thread t2 = new(MyThreadEntryPoint);
+        Thread t3 = new(MyThreadEntryPoint);
 
-            t1.Start("https://endjin.com/");
-            t2.Start("https://oreilly.com/");
-            t3.Start("https://dotnet.microsoft.com/");
-        }
+        t1.Start("https://endjin.com/");
+        t2.Start("https://oreilly.com/");
+        t3.Start("https://dotnet.microsoft.com/");
+    }
 
-        private static void MyThreadEntryPoint(object arg)
-        {
-            string url = (string)arg;
+    private static void MyThreadEntryPoint(object? arg)
+    {
+        string url = (string)arg!;
 
-            using (var w = new WebClient())
-            {
-                Console.WriteLine($"Downloading {url}");
-                string page = w.DownloadString(url);
-                Console.WriteLine($"Downloaded {url}, length {page.Length}");
-            }
-        }
+        Console.WriteLine($"Downloading {url}");
+        var response = http.Send(new HttpRequestMessage(HttpMethod.Get, url));
+        using StreamReader r = new(response.Content.ReadAsStream());
+        string page = r.ReadToEnd();
+        Console.WriteLine($"Downloaded {url}, length {page.Length}");
     }
 }

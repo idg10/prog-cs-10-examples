@@ -1,36 +1,34 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
 
-namespace ThreadAffinity
+namespace ThreadAffinity;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void findButton_Click(object sender, RoutedEventArgs e)
-        {
-            SynchronizationContext uiContext = SynchronizationContext.Current;
+    private void findButton_Click(object sender, RoutedEventArgs e)
+    {
+        SynchronizationContext uiContext = SynchronizationContext.Current!;
 
-            Task.Run(() =>
+        Task.Run(() =>
+        {
+            string pictures =
+                Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            var folder = new DirectoryInfo(pictures);
+            FileInfo[] allFiles =
+                folder.GetFiles("*.jpg", SearchOption.AllDirectories);
+            FileInfo? largest =
+                allFiles.OrderByDescending(f => f.Length).FirstOrDefault();
+
+            if (largest is not null)
             {
-                string pictures =
-                    Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-                var folder = new DirectoryInfo(pictures);
-                FileInfo[] allFiles =
-                    folder.GetFiles("*.jpg", SearchOption.AllDirectories);
-                FileInfo largest =
-                    allFiles.OrderByDescending(f => f.Length).FirstOrDefault();
-
                 uiContext.Post(_ =>
                 {
                     long sizeMB = largest.Length / (1024 * 1024);
@@ -38,7 +36,7 @@ namespace ThreadAffinity
                         $"Largest file ({sizeMB}MB) is {largest.FullName}";
                 },
                 null);
-            });
-        }
+            }
+        });
     }
 }

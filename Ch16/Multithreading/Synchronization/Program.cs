@@ -1,9 +1,8 @@
-﻿namespace Synchronization
+﻿namespace Synchronization;
+
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main()
-        {
-        }
     }
 }

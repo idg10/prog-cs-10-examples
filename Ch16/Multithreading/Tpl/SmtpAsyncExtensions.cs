@@ -1,37 +1,37 @@
 ﻿using System.ComponentModel;
 using System.Net.Mail;
-using System.Threading.Tasks;
 
-namespace Tpl
+namespace Tpl;
+
+public static class SmtpAsyncExtensions
 {
-    public static class SmtpAsyncExtensions
+    public static Task SendTaskAsync(this SmtpClient mailClient, string from,
+                                string recipients, string subject, string body)
     {
-        public static Task SendTaskAsync(this SmtpClient mailClient, string from,
-                                    string recipients, string subject, string body)
+        var tcs = new TaskCompletionSource<object?>();
+
+        void CompletionHandler(object s, AsyncCompletedEventArgs e)
         {
-            var tcs = new TaskCompletionSource<object>();
-
-            void CompletionHandler(object s, AsyncCompletedEventArgs e)
+            // Check this is the notification for our send
+            if (!object.ReferenceEquals(e.UserState, tcs)) { return; }
+            mailClient.SendCompleted -= CompletionHandler;
+            if (e.Cancelled)
             {
-                mailClient.SendCompleted -= CompletionHandler;
-                if (e.Cancelled)
-                {
-                    tcs.SetCanceled();
-                }
-                else if (e.Error != null)
-                {
-                    tcs.SetException(e.Error);
-                }
-                else
-                {
-                    tcs.SetResult(null);
-                }
-            };
+                tcs.SetCanceled();
+            }
+            else if (e.Error != null)
+            {
+                tcs.SetException(e.Error);
+            }
+            else
+            {
+                tcs.SetResult(null);
+            }
+        };
 
-            mailClient.SendCompleted += CompletionHandler;
-            mailClient.SendAsync(from, recipients, subject, body, null);
+        mailClient.SendCompleted += CompletionHandler;
+        mailClient.SendAsync(from, recipients, subject, body, tcs);
 
-            return tcs.Task;
-        }
+        return tcs.Task;
     }
 }

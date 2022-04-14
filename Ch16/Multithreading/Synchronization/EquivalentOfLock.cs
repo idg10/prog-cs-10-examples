@@ -1,67 +1,63 @@
-﻿using System.Collections.Generic;
-using System.Threading;
+﻿namespace Synchronization;
 
-namespace Synchronization
+class EquivalentOfLock
 {
-    class EquivalentOfLock
+    private readonly object _sync = new();
+
+    private decimal _total;
+
+    private readonly List<string> _saleDetails = new();
+
+    public decimal Total
     {
-        private readonly object _sync = new object();
-
-        private decimal _total;
-
-        private readonly List<string> _saleDetails = new List<string>();
-
-        public decimal Total
+        get
         {
-            get
+            lock (_sync)
             {
-                lock (_sync)
-                {
-                    return _total;
-                }
+                return _total;
             }
         }
+    }
 
-        public void AddSale(string item, decimal price)
+    public void AddSale(string item, decimal price)
+    {
+        string details = $"{item} sold at {price}";
+        bool lockWasTaken = false;
+        object temp = _sync;
+        try
         {
-            string details = $"{item} sold at {price}";
-            bool lockWasTaken = false;
-            var temp = _sync;
-            try
+            Monitor.Enter(temp, ref lockWasTaken);
             {
-                Monitor.Enter(temp, ref lockWasTaken);
-                {
-                    _total += price;
-                    _saleDetails.Add(details);
-                }
-            }
-            finally
-            {
-                if (lockWasTaken)
-                {
-                    Monitor.Exit(temp);
-                }
+                _total += price;
+                _saleDetails.Add(details);
             }
         }
-
-        public string[] GetDetails(out decimal total)
+        finally
         {
-            bool lockWasTaken = false;
-            var temp = _sync;
-            try
+            if (lockWasTaken)
             {
-                Monitor.Enter(temp, ref lockWasTaken);
-                {
-                    total = _total;
-                    return _saleDetails.ToArray();
-                }
+                Monitor.Exit(temp);
             }
-            finally
+        }
+    }
+
+    public string[] GetDetails(out decimal total)
+    {
+        bool lockWasTaken = false;
+        object temp = _sync;
+        try
+        {
+            Monitor.Enter(temp, ref lockWasTaken);
             {
-                if (lockWasTaken)
-                {
-                    Monitor.Exit(temp);
-                }
+                total = _total;
+                return _saleDetails.ToArray();
+            }
+        }
+        finally
+        {
+            if (lockWasTaken)
+            {
+                Monitor.Exit(temp);
             }
         }
     }

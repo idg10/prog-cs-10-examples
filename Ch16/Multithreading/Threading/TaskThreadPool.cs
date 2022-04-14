@@ -1,26 +1,22 @@
-﻿using System;
-using System.Net;
-using System.Threading.Tasks;
+﻿namespace Threading;
 
-namespace Threading
+public static class TaskThreadPool
 {
-    public static class TaskThreadPool
+    private static readonly HttpClient http = new();
+
+    public static void DoWork()
     {
-        public static void DoWork()
-        {
-            Task.Run(() => MyThreadEntryPoint("https://oreilly.com/"));
-        }
+        Task.Run(() => MyThreadEntryPoint("https://oreilly.com/"));
+    }
 
-        private static void MyThreadEntryPoint(object arg)
-        {
-            string url = (string)arg;
+    private static void MyThreadEntryPoint(object arg)
+    {
+        string url = (string)arg!;
 
-            using (var w = new WebClient())
-            {
-                Console.WriteLine($"Downloading {url}");
-                string page = w.DownloadString(url);
-                Console.WriteLine($"Downloaded {url}, length {page.Length}");
-            }
-        }
+        Console.WriteLine($"Downloading {url}");
+        var response = http.Send(new HttpRequestMessage(HttpMethod.Get, url));
+        using StreamReader r = new(response.Content.ReadAsStream());
+        string page = r.ReadToEnd();
+        Console.WriteLine($"Downloaded {url}, length {page.Length}");
     }
 }

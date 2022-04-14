@@ -1,33 +1,30 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Concurrent;
 
-namespace Threading
+using Threading;
+
+ObjectVisibility.FormatDictionary(new Dictionary<string, string> { { "One", "one" }, { "Two", "two" } });
+
+// Demonstrate non-thread-safety of example misusing ConcurrentDictionary
+ConcurrentDictionary<int, string> cd = new();
+Thread[] threads = new Thread[Environment.ProcessorCount];
+for (int i = 0; i < threads.Length; i++)
 {
-    class Program
+    threads[i] = new Thread(() =>
     {
-        static void Main()
+        try
         {
-        }
-
-        public static string FormatDictionary<TKey, TValue>(
-            IDictionary<TKey, TValue> input)
-        {
-            var sb = new StringBuilder();
-            foreach (var item in input)
+            while (true)
             {
-                sb.AppendFormat("{0}: {1}", item.Key, item.Value);
-                sb.AppendLine();
+                NonThreadSafeUseOfThreadSafeCollection.UseDictionary(cd);
+                cd.TryRemove(1, out _);
             }
-
-            return sb.ToString();
         }
-
-        static string UseDictionary(ConcurrentDictionary<int, string> cd)
+        catch (Exception ex)
         {
-            cd[1] = "One";
-            return cd[1];
+            Console.WriteLine(ex);
         }
-    }
+    });
+    threads[i].Start();
 }
+
+Console.ReadLine();
