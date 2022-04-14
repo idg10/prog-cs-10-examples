@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace ReflectionTypes;
 
-namespace ReflectionTypes
+public static class GenericTypeObjects
 {
-    public static class GenericTypeObjects
+    public static void Get()
     {
-        public static void Get()
-        {
-            Type bound = typeof(List<int>);
-            Type unbound = typeof(List<>);
-        }
+        Type bound = typeof(List<int>);
+        Type unbound = typeof(List<>);
     }
 }

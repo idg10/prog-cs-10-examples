@@ -1,14 +1,12 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 
-namespace ReflectionTypes
+namespace ReflectionTypes;
+
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
-        {
-            Assembly me = typeof(Program).Assembly;
-            Console.WriteLine(me.FullName);
-        }
+        Assembly me = typeof(Program).Assembly;
+        Console.WriteLine(me.FullName);
     }
 }

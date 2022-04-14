@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Reflection.Context;
 
-namespace ReflectionContexts
+namespace ReflectionContexts;
+
+class NotVeryInteresting
 {
-    class NotVeryInteresting
-    {
-    }
+}
 
-    class MyReflectionContext : CustomReflectionContext
+class MyReflectionContext : CustomReflectionContext
+{
+    protected override IEnumerable<PropertyInfo> AddProperties(Type type)
     {
-        protected override IEnumerable<PropertyInfo> AddProperties(Type type)
+        if (type == typeof(NotVeryInteresting))
         {
-            if (type == typeof(NotVeryInteresting))
-            {
-                var fakeProp = CreateProperty(
-                    MapType(typeof(string).GetTypeInfo()),
-                    "FakeProperty",
-                    o => "FakeValue",
-                    (o, v) => Console.WriteLine($"Setting value: {v}"));
+            var fakeProp = CreateProperty(
+                MapType(typeof(string).GetTypeInfo()),
+                "FakeProperty",
+                o => "FakeValue",
+                (o, v) => Console.WriteLine($"Setting value: {v}"));
 
-                return new[] { fakeProp };
-            }
-            else
-            {
-                return base.AddProperties(type);
-            }
+            return new[] { fakeProp };
+        }
+        else
+        {
+            return base.AddProperties(type);
         }
     }
 }

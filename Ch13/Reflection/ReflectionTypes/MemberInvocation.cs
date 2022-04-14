@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace ReflectionTypes
 {
@@ -7,11 +6,13 @@ namespace ReflectionTypes
     {
         public static class ViaType
         {
-            public static object CreateAndInvokeMethod(
+            public static object? CreateAndInvokeMethod(
               string typeName, string member, params object[] args)
             {
-                Type t = Type.GetType(typeName);
-                object instance = Activator.CreateInstance(t);
+                Type t = Type.GetType(typeName)
+                    ?? throw new ArgumentException(
+                        $"Type {typeName} not found", nameof(typeName));
+                object instance = Activator.CreateInstance(t)!;
                 return t.InvokeMember(
                   member,
                   BindingFlags.Instance | BindingFlags.Public | BindingFlags.InvokeMethod,
@@ -23,12 +24,16 @@ namespace ReflectionTypes
 
         public static class ViaMethodInfo
         {
-            public static object CreateAndInvokeMethod(
+            public static object? CreateAndInvokeMethod(
                 string typeName, string member, params object[] args)
             {
-                Type t = Type.GetType(typeName);
-                object instance = Activator.CreateInstance(t);
-                MethodInfo m = t.GetMethod(member);
+                Type t = Type.GetType(typeName)
+                    ?? throw new ArgumentException(
+                        $"Type {typeName} not found", nameof(typeName));
+                object instance = Activator.CreateInstance(t)!;
+                MethodInfo m = t.GetMethod(member)
+                    ?? throw new ArgumentException(
+                        $"Method {member} not found", nameof(member)); ;
                 return m.Invoke(instance, args);
             }
         }

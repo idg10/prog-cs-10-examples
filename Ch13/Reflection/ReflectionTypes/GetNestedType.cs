@@ -1,14 +1,11 @@
-﻿using System;
+﻿namespace ReflectionTypes;
 
-namespace ReflectionTypes
+public static class GetNestedType
 {
-    public static class GetNestedType
+    public static void Get()
     {
-        public static void Get()
-        {
-            var someAssembly = typeof(GetNestedType).Assembly;
+        var someAssembly = typeof(GetNestedType).Assembly;
 
-            Type nt = someAssembly.GetType("MyLib.ContainingType+Inside");
-        }
+        Type? nt = someAssembly.GetType("MyLib.ContainingType+Inside");
     }
 }

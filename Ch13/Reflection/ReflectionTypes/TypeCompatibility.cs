@@ -1,15 +1,12 @@
-﻿using System;
+﻿namespace ReflectionTypes;
 
-namespace ReflectionTypes
+public static class TypeCompatibility
 {
-    public static class TypeCompatibility
+    public static void Test()
     {
-        public static void Test()
-        {
-            Type stringType = typeof(string);
-            Type objectType = typeof(object);
-            Console.WriteLine(stringType.IsAssignableFrom(objectType));
-            Console.WriteLine(objectType.IsAssignableFrom(stringType));
-        }
+        Type stringType = typeof(string);
+        Type objectType = typeof(object);
+        Console.WriteLine(stringType.IsAssignableFrom(objectType));
+        Console.WriteLine(objectType.IsAssignableFrom(stringType));
     }
 }

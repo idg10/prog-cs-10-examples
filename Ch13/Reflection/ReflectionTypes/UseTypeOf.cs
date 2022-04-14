@@ -1,13 +1,10 @@
-﻿using System;
+﻿namespace ReflectionTypes;
 
-namespace ReflectionTypes
+public static class UseTypeOf
 {
-    public static class UseTypeOf
+    public static void Get()
     {
-        public static void Get()
-        {
-            Type stringType = typeof(string);
-            Type disposableType = typeof(IDisposable);
-        }
+        Type stringType = typeof(string);
+        Type disposableType = typeof(IDisposable);
     }
 }
