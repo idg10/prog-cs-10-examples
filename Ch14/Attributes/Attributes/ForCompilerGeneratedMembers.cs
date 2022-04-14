@@ -1,13 +1,10 @@
-﻿using System;
+﻿namespace Attributes;
 
-namespace Attributes
+public class ForCompilerGeneratedMembers
 {
-    public class ForCompilerGeneratedMembers
-    {
-        [field: NonSerialized]
-        public int DynamicId { get; set; }
+    [field: NonSerialized]
+    public int DynamicId { get; set; }
 
-        [field: NonSerialized]
-        public event EventHandler Frazzled;
-    }
+    [field: NonSerialized]
+    public event EventHandler? Frazzled;
 }

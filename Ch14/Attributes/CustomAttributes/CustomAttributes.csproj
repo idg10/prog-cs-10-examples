@@ -2,8 +2,15 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <NoWarn>IDE0031;IDE0051</NoWarn>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <NoWarn>IDE0031;IDE0051;IDE0028</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Reflection.MetadataLoadContext" Version="5.0.1" />
+  </ItemGroup>
 
 </Project>

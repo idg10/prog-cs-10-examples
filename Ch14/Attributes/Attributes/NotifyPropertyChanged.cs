@@ -1,35 +1,34 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Attributes
+namespace Attributes;
+
+public class NotifyPropertyChanged : INotifyPropertyChanged
 {
-    public class NotifyPropertyChanged : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected bool SetProperty<T>(
-           ref T field,
-           T value,
-            [CallerMemberName] string propertyName = null)
+    protected bool SetProperty<T>(
+        ref T field,
+        T value,
+        [CallerMemberName] string propertyName = "")
+    {
+        if (!Equals(field, value))
         {
-            if (!Equals(field, value))
-            {
-                return false;
-            }
-
-            field = value;
-
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            return true;
+            return false;
         }
-    }
 
-    // This interface is defined by .NET. The book shows it for illustration purposes, but
-    // we don't want to define our own version, hence the #if false
-#if false
-    public interface INotifyPropertyChanged
-    {
-        event PropertyChangedEventHandler PropertyChanged;
+        field = value;
+
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        return true;
     }
-#endif
 }
+
+// This interface is defined by .NET. The book shows it for illustration purposes, but
+// we don't want to define our own version, hence the #if false
+#if false
+public interface INotifyPropertyChanged
+{
+    event PropertyChangedEventHandler PropertyChanged;
+}
+#endif

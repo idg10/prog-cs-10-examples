@@ -32,6 +32,6 @@ using System.Reflection;
 [assembly: AssemblyConfiguration("Retail")]
 [assembly: AssemblyCompany("Endjin Ltd.")]
 [assembly: AssemblyProduct("ExamplePlugin")]
-[assembly: AssemblyCopyright("Copyright © 2019 Endjin Ltd.")]
+[assembly: AssemblyCopyright("Copyright © 2022 Endjin Ltd.")]
 [assembly: AssemblyTrademark("")]
 #endif

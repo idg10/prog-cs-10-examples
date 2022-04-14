@@ -1,9 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage(
-    "StyleCop.CSharp.NamingRules",
-    "SA1313:Parameter names should begin with lower-case letter",
-    Justification = "Triple underscore acceptable for unused lambda parameter",
+    "Style",
+    "IDE0060:Remove unused parameter",
+    Justification = "This is just some example code from a book",
     Scope = "member",
     Target = "~M:Idg.Examples.SomeMethod")]
 

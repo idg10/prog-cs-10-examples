@@ -1,13 +1,12 @@
-﻿namespace Attributes
-{
-    public class MyViewModel : NotifyPropertyChanged
-    {
-        private string _name;
+﻿namespace Attributes;
 
-        public string Name
-        {
-            get => _name;
-            set => SetProperty(ref _name, value);
-        }
+public class MyViewModel : NotifyPropertyChanged
+{
+    private string? _name;
+
+    public string? Name
+    {
+        get => _name;
+        set => SetProperty(ref _name, value);
     }
 }
