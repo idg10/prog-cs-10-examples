@@ -1,33 +1,26 @@
-﻿using System;
+﻿using System.Reactive.Disposables;
 using System.Reactive.Linq;
 
-namespace RxQueryOperators
-{
-    public class Trade
-    {
-        public string StockName { get; set; }
-        public decimal UnitPrice { get; set; }
-        public int Number { get; set; }
+namespace RxQueryOperators;
 
-        public static IObservable<Trade> TestStream()
+public record Trade(string StockName, decimal UnitPrice, int Number)
+{
+    public static IObservable<Trade> TestStream()
+    {
+        return Observable.Create<Trade>(obs =>
         {
-            return Observable.Create<Trade>(obs =>
+            string[] names = { "MSFT", "GOOGL", "AAPL" };
+            var r = new Random(0);
+            for (int i = 0; i < 100; ++i)
             {
-                string[] names = { "MSFT", "GOOGL", "AAPL" };
-                var r = new Random(0);
-                for (int i = 0; i < 100; ++i)
-                {
-                    var t = new Trade
-                    {
-                        StockName = names[r.Next(names.Length)],
-                        UnitPrice = r.Next(1, 100),
-                        Number = r.Next(10, 1000)
-                    };
-                    obs.OnNext(t);
-                }
-                obs.OnCompleted();
-                return default(IDisposable);
-            });
-        }
+                var t = new Trade(
+                    StockName: names[r.Next(names.Length)],
+                    UnitPrice: r.Next(1, 100),
+                    Number: r.Next(10, 1000));
+                obs.OnNext(t);
+            }
+            obs.OnCompleted();
+            return Disposable.Empty;
+        });
     }
 }

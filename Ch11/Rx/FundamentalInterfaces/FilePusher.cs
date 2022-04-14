@@ -1,33 +1,33 @@
-﻿using System;
-using System.IO;
+﻿namespace FundamentalInterfaces;
 
-namespace FundamentalInterfaces
+public class FilePusher : IObservable<string>
 {
-    public class FilePusher : IObservable<string>
+    private readonly string _path;
+    public FilePusher(string path)
     {
-        private readonly string _path;
-        public FilePusher(string path)
-        {
-            _path = path;
-        }
+        _path = path;
+    }
 
-        public IDisposable Subscribe(IObserver<string> observer)
+    public IDisposable Subscribe(IObserver<string> observer)
+    {
+        using (var sr = new StreamReader(_path))
         {
-            using (var sr = new StreamReader(_path))
+            while (!sr.EndOfStream)
             {
-                while (!sr.EndOfStream)
+                string? line = sr.ReadLine();
+                if (line is not null)
                 {
-                    observer.OnNext(sr.ReadLine());
+                    observer.OnNext(line);
                 }
             }
-            observer.OnCompleted();
-            return NullDisposable.Instance;
         }
+        observer.OnCompleted();
+        return NullDisposable.Instance;
+    }
 
-        private class NullDisposable : IDisposable
-        {
-            public static NullDisposable Instance = new NullDisposable();
-            public void Dispose() { }
-        }
+    private class NullDisposable : IDisposable
+    {
+        public static NullDisposable Instance = new();
+        public void Dispose() { }
     }
 }

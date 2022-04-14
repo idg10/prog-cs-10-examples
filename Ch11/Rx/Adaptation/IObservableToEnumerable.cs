@@ -1,16 +1,14 @@
-﻿using System;
-using System.Reactive.Linq;
+﻿using System.Reactive.Linq;
 
-namespace Adaptation
+namespace Adaptation;
+
+public static class IObservableToEnumerable
 {
-    public static class IObservableToEnumerable
+    public static void ShowAll(IObservable<string> source)
     {
-        public static void ShowAll(IObservable<string> source)
+        foreach (string s in source.ToEnumerable())
         {
-            foreach (string s in source.ToEnumerable())
-            {
-                Console.WriteLine(s);
-            }
+            Console.WriteLine(s);
         }
     }
 }

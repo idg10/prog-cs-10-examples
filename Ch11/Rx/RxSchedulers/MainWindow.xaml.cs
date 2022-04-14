@@ -1,32 +1,30 @@
-﻿using System;
-using System.Reactive.Concurrency;
+﻿using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Windows;
 
-namespace RxSchedulers
+namespace RxSchedulers;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            IObservable<Trade> trades = GetTradeStream();
-            IObservable<Trade> tradesInUiContext =
-                trades.ObserveOn(DispatcherScheduler.Current);
-            tradesInUiContext.Subscribe(t =>
-            {
-                tradeInfoTextBox.AppendText(
-                    $"{t.StockName}: {t.Number} at {t.UnitPrice}\r\n");
-            });
-        }
-
-        private IObservable<Trade> GetTradeStream()
+        IObservable<Trade> trades = GetTradeStream();
+        IObservable<Trade> tradesInUiContext =
+            trades.ObserveOn(DispatcherScheduler.Current);
+        tradesInUiContext.Subscribe(t =>
         {
-            return Trade.TestStreamSlow();
-        }
+            tradeInfoTextBox.AppendText(
+                $"{t.StockName}: {t.Number} at {t.UnitPrice}\r\n");
+        });
+    }
+
+    private static IObservable<Trade> GetTradeStream()
+    {
+        return Trade.TestStreamSlow();
     }
 }

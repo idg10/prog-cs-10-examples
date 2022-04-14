@@ -1,25 +1,29 @@
-﻿using System;
-using System.IO;
-using System.Reactive.Linq;
+﻿using System.Reactive.Linq;
 
-namespace DelegateBasedPubSub
+namespace DelegateBasedPubSub;
+
+public static class AsyncSource
 {
-    public static class AsyncSource
+    public static IObservable<string> GetFilePusher(string path)
     {
-        public static IObservable<string> GetFilePusher(string path)
+        return Observable.Create<string>(async (observer, cancel) =>
         {
-            return Observable.Create<string>(async (observer, cancel) =>
+            using (var sr = new StreamReader(path))
             {
-                using (var sr = new StreamReader(path))
+                while (!sr.EndOfStream && !cancel.IsCancellationRequested)
                 {
-                    while (!sr.EndOfStream && !cancel.IsCancellationRequested)
+                    string? line = await sr.ReadLineAsync();
+                    if (line is not null)
                     {
-                        observer.OnNext(await sr.ReadLineAsync());
+                        observer.OnNext(line);
+                    }
+                    else
+                    {
+                        break;
                     }
                 }
-                observer.OnCompleted();
-                return () => { };
-            });
-        }
+            }
+            observer.OnCompleted();
+        });
     }
 }

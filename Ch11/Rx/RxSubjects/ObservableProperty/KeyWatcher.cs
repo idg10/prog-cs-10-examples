@@ -1,20 +1,18 @@
-﻿using System;
-using System.Reactive.Subjects;
+﻿using System.Reactive.Subjects;
 
-namespace RxSubjects.ObservableProperty
+namespace RxSubjects.ObservableProperty;
+
+public class KeyWatcher
 {
-    public class KeyWatcher
+    private readonly Subject<char> _subject = new ();
+
+    public IObservable<char> Keys => _subject;
+
+    public void Run()
     {
-        private readonly Subject<char> _subject = new Subject<char>();
-
-        public IObservable<char> Keys => _subject;
-
-        public void Run()
+        while (true)
         {
-            while (true)
-            {
-                _subject.OnNext(Console.ReadKey(true).KeyChar);
-            }
+            _subject.OnNext(Console.ReadKey(true).KeyChar);
         }
     }
 }

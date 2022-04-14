@@ -1,15 +1,40 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+
+    <!--    
+    Note: as of 2021/11/02, the current version of System.Reactive (5.0)
+    does not seem to work with net6.0-windows and <UseWPF>true</UseWPF>.
+    For some reason, instead of having a separate package with the WPF-specific
+    bits in like they used to, it appears that Rx now tries to offer a 'one
+    size fits all' single package that then tries to get clever about exactly
+    which particular implementation of System.Reactive.dll it gives you.
+    And unfortunately it's not as clever as you'd hope. It seems that unless
+    you set the target framework to exactly what it's expecting, you can
+    get build errors, and vexingly, you can get VS reporting errors in
+    IntelliSense even when running a Build actually succeeds!
+    For now, the only way to get a working WPF build when using WPF-specific
+    Rx features is to target net5.0-windows10.0.19041. We then set the
+    language version to latest to be able to use C# 10 features.
+    Once Rx ships a version supporting .NET 6.0, we should be able to use
+    net6.0-windows (possibly qualified with whatever specific version Rx
+    requires as a minimum), and will be able to get rid of the LangVersion
+    element.
+    -->
+
+    <TargetFramework>net5.0-windows10.0.19041</TargetFramework>
+    <LangVersion>latest</LangVersion>
     <UseWPF>true</UseWPF>
 
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
     <NoWarn>IDE0067</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Reactive" Version="4.2.0" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
   </ItemGroup>
 
 </Project>

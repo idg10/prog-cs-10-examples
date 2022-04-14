@@ -1,66 +1,69 @@
-﻿using System;
-using System.IO;
+﻿namespace FundamentalInterfaces;
 
-namespace FundamentalInterfaces
+public class FilePusherWithErrorHandling : IObservable<string>
 {
-    public class FilePusherWithErrorHandling : IObservable<string>
+    private readonly string _path;
+    public FilePusherWithErrorHandling(string path)
     {
-        private readonly string _path;
-        public FilePusherWithErrorHandling(string path)
-        {
-            _path = path;
-        }
+        _path = path;
+    }
 
-        public IDisposable Subscribe(IObserver<string> observer)
-        {
-            StreamReader sr = null;
-            string line = null;
-            bool failed = false;
+    public IDisposable Subscribe(IObserver<string> observer)
+    {
+        StreamReader? sr = null;
+        string? line = null;
+        bool failed = false;
 
-            try
+        try
+        {
+            while (true)
             {
-                while (true)
+                try
                 {
-                    try
+                    if (sr == null)
                     {
-                        if (sr == null)
-                        {
-                            sr = new StreamReader(_path);
-                        }
-                        if (sr.EndOfStream)
-                        {
-                            break;
-                        }
-                        line = sr.ReadLine();
+                        sr = new StreamReader(_path);
                     }
-                    catch (IOException x)
+                    if (sr.EndOfStream)
                     {
-                        observer.OnError(x);
-                        failed = true;
                         break;
                     }
+                    line = sr.ReadLine();
+                }
+                catch (IOException x)
+                {
+                    observer.OnError(x);
+                    failed = true;
+                    break;
+                }
 
+                if (line is not null)
+                {
                     observer.OnNext(line);
                 }
-            }
-            finally
-            {
-                if (sr != null)
+                else
                 {
-                    sr.Dispose();
+                    break;
                 }
             }
-            if (!failed)
-            {
-                observer.OnCompleted();
-            }
-            return NullDisposable.Instance;
         }
-
-        private class NullDisposable : IDisposable
+        finally
         {
-            public static NullDisposable Instance = new NullDisposable();
-            public void Dispose() { }
+            if (sr != null)
+            {
+                sr.Dispose();
+            }
         }
+        if (!failed)
+        {
+            observer.OnCompleted();
+        }
+        return NullDisposable.Instance;
+    }
+
+    private class NullDisposable : IDisposable
+    {
+        public static NullDisposable Instance = new();
+        public void Dispose() { }
     }
 }
