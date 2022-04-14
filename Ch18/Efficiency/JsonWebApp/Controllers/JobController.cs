@@ -1,40 +1,34 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO.Pipelines;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
 
-namespace JsonWebApp.Controllers
+namespace JsonWebApp.Controllers;
+
+[ApiController]
+public class JobController : ControllerBase
 {
-    [ApiController]
-    public class JobController : ControllerBase
-    {
-        // Change to #if false to switch to low-allocation version from Example 8
+    // Change to #if false to switch to low-allocation version from Example 8
 #if true
-        [HttpPost]
-        [Route("/jobs/create")]
-        public void CreateJob([FromBody] JobDescription requestBody)
+    [HttpPost]
+    [Route("/jobs/create")]
+    public void CreateJob([FromBody] JobDescription requestBody)
+    {
+        switch (requestBody.JobCategory)
         {
-            switch (requestBody.JobCategory)
-            {
-                case "arduous":
-                    CreateArduousJob(requestBody.DepartmentId);
-                    break;
+            case "arduous":
+                CreateArduousJob(requestBody.DepartmentId);
+                break;
 
-                case "tedious":
-                    CreateTediousJob(requestBody.DepartmentId);
-                    break;
-            }
+            case "tedious":
+                CreateTediousJob(requestBody.DepartmentId);
+                break;
         }
+    }
 
-        public class JobDescription
-        {
-            public int DepartmentId { get; set; }
-            public string JobCategory { get; set; }
-        }
+    public record JobDescription(int DepartmentId, string JobCategory);
 
 #else
 
@@ -142,19 +136,15 @@ namespace JsonWebApp.Controllers
             }
         }
 
-        public class JobDescription
-        {
-            public int DepartmentId { get; set; }
-            public string JobCategory { get; set; }
-        }
+    public record JobDescription(int DepartmentId, string JobCategory);
 #endif
-        private void CreateTediousJob(int departmentId)
-        {
-            Debug.WriteLine($"Real code would be creating a tedious job for {departmentId} at this point");
-        }
-
-        private void CreateArduousJob(int departmentId)
-        {
-            Debug.WriteLine($"Real code would be creating an arduous job for {departmentId} at this point");
-        }
+    private static void CreateTediousJob(int departmentId)
+    {
+        Debug.WriteLine($"Real code would be creating a tedious job for {departmentId} at this point");
     }
+
+    private static void CreateArduousJob(int departmentId)
+    {
+        Debug.WriteLine($"Real code would be creating an arduous job for {departmentId} at this point");
+    }
+}
