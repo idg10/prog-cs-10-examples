@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace QueryInifiniteSource
+namespace QueryInifiniteSource;
+
+public static class CustomDeferredLinqProvider
 {
-    public static class CustomDeferredLinqProvider
+    public static IEnumerable<T> Where<T>(this IEnumerable<T> src,
+                                          Func<T, bool> filter)
     {
-        public static IEnumerable<T> Where<T>(this IEnumerable<T> src,
-                                              Func<T, bool> filter)
+        foreach (T item in src)
         {
-            foreach (T item in src)
+            if (filter(item))
             {
-                if (filter(item))
-                {
-                    yield return item;
-                }
+                yield return item;
             }
         }
     }

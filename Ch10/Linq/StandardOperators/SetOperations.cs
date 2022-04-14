@@ -1,12 +1,9 @@
-﻿using System.Linq;
+﻿namespace StandardOperators;
 
-namespace StandardOperators
+public static class SetOperations
 {
-    public static class SetOperations
+    public static void DistinctOperator()
     {
-        public static void DistinctOperator()
-        {
-            var categories = Course.Catalog.Select(c => c.Category).Distinct();
-        }
+        var categories = Course.Catalog.Select(c => c.Category).Distinct();
     }
 }

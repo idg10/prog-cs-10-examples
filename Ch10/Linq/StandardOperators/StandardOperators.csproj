@@ -1,11 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <NoWarn>IDE0051</NoWarn>
 
-    <!-- One of the examples uses the Rect type -->
+	<ImplicitUsings>enable</ImplicitUsings>
+	<Nullable>enable</Nullable>
+
+	<!-- One of the examples uses the Rect type -->
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 

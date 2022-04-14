@@ -1,11 +1,3 @@
-﻿namespace StandardOperators
-{
-    public class CourseChoice
-    {
-        public int StudentId { get; set; }
+﻿namespace StandardOperators;
 
-        public string Category { get; set; }
-
-        public int Number { get; set; }
-    }
-}
+public record CourseChoice(int StudentId, string Category, int Number);

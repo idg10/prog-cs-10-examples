@@ -1,41 +1,40 @@
 ﻿using System;
 using System.Globalization;
 
-namespace CustomLinqExample
-{
-    public static class CustomLinqProvider
-    {
-        public static CultureInfo[] Where(this CultureInfo[] cultures,
-                                          Predicate<CultureInfo> filter)
-        {
-            return Array.FindAll(cultures, filter);
-        }
+namespace CustomLinqExample;
 
-        public static T[] Select<T>(this CultureInfo[] cultures,
-                                    Func<CultureInfo, T> map)
-        {
-            var result = new T[cultures.Length];
-            for (int i = 0; i < cultures.Length; ++i)
-            {
-                result[i] = map(cultures[i]);
-            }
-            return result;
-        }
+public static class CustomLinqProvider
+{
+    public static CultureInfo[] Where(this CultureInfo[] cultures,
+                                        Predicate<CultureInfo> filter)
+    {
+        return Array.FindAll(cultures, filter);
     }
 
-    class Program
+    public static T[] Select<T>(this CultureInfo[] cultures,
+                                Func<CultureInfo, T> map)
     {
-        static void Main(string[] args)
+        var result = new T[cultures.Length];
+        for (int i = 0; i < cultures.Length; ++i)
         {
-            var commaCultures =
-              from culture in CultureInfo.GetCultures(CultureTypes.AllCultures)
-              where culture.NumberFormat.NumberDecimalSeparator == ","
-              select culture.Name;
+            result[i] = map(cultures[i]);
+        }
+        return result;
+    }
+}
 
-            foreach (string cultureName in commaCultures)
-            {
-                Console.WriteLine(cultureName);
-            }
+class Program
+{
+    static void Main(string[] args)
+    {
+        var commaCultures =
+            from culture in CultureInfo.GetCultures(CultureTypes.AllCultures)
+            where culture.NumberFormat.NumberDecimalSeparator == ","
+            select culture.Name;
+
+        foreach (string cultureName in commaCultures)
+        {
+            Console.WriteLine(cultureName);
         }
     }
 }
