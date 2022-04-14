@@ -1,39 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-
-namespace AsyncEnum
+﻿await foreach (string line in ReadLinesAsync(args[0]))
 {
-    internal static class Program
-    {
-        private static async Task Main(string[] args)
-        {
-            await foreach (string line in ReadLinesAsync(args[0]))
-            {
-                Console.WriteLine(line);
-            }
-        }
+    Console.WriteLine(line);
+}
 
-        private static async IAsyncEnumerable<string> ReadLinesAsync(string path)
+static async IAsyncEnumerable<string> ReadLinesAsync(string path)
+{
+    using (var bodyTextReader = new StreamReader(path))
+    {
+        while (!bodyTextReader.EndOfStream)
         {
-            using (var bodyTextReader = new StreamReader(path))
-            {
-                while (!bodyTextReader.EndOfStream)
-                {
-                    string line = await bodyTextReader.ReadLineAsync();
-                    yield return line;
-                }
-            }
+            string? line = await bodyTextReader.ReadLineAsync();
+            if (line is not null) { yield return line; }
         }
     }
 }
 
 
+
 // These examples illustrate features that are built into .NET. We don't
 // want to define it ourselves, hence the #if false
 #if false
-    bool MoveNext();
+bool MoveNext();
 
 
 public interface IAsyncEnumerable<out T>

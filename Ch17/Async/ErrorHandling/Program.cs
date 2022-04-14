@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace ErrorHandling
 {
@@ -33,8 +29,8 @@ namespace ErrorHandling
                     string longestLine = string.Empty;
                     while (!bodyTextReader.EndOfStream)
                     {
-                        string line = await bodyTextReader.ReadLineAsync();
-                        if (longestLine.Length > line.Length)
+                        string? line = await bodyTextReader.ReadLineAsync();
+                        if (line is not null && longestLine.Length > line.Length)
                         {
                             longestLine = line;
                         }
@@ -62,10 +58,7 @@ namespace ErrorHandling
         {
             public async Task<string> FindLongestLineAsync(string url)
             {
-                if (url == null)
-                {
-                    throw new ArgumentNullException("url");
-                }
+                ArgumentNullException.ThrowIfNull(url);
 
                 await Task.Yield();
                 return "";
@@ -76,10 +69,7 @@ namespace ErrorHandling
         {
             public static Task<string> FindLongestLineAsync(string url)
             {
-                if (url == null)
-                {
-                    throw new ArgumentNullException("url");
-                }
+                ArgumentNullException.ThrowIfNull(url);
                 return FindLongestLineCore(url);
 
                 static async Task<string> FindLongestLineCore(string url)
@@ -109,7 +99,7 @@ namespace ErrorHandling
         {
             static async Task CatchAll(Task[] ts)
             {
-                Task t = null;
+                Task? t = null;
                 try
                 {
                     t = Task.WhenAll(ts);
@@ -119,7 +109,7 @@ namespace ErrorHandling
                 {
                     Console.WriteLine(first);
 
-                    if (t != null && t.Exception.InnerExceptions.Count > 1)
+                    if (t?.Exception?.InnerExceptions.Count > 1)
                     {
                         Console.WriteLine("I've found some more:");
                         Console.WriteLine(t.Exception);

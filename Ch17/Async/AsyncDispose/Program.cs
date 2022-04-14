@@ -1,38 +1,31 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-
-namespace AsyncDispose
+﻿await using (DiagnosticWriter w = new(@"c:\temp\log.txt"))
 {
-    class Program
+    await w.LogAsync("Test");
+}
+
+class DiagnosticWriter : IAsyncDisposable
+{
+    private StreamWriter? _sw;
+
+    public DiagnosticWriter(string path)
     {
-        static async Task Main(string[] args)
-        {
-            await using (var w = new DiagnosticWriter(@"c:\temp\log.txt"))
-            {
-                await w.LogAsync("Test");
-            }
-        }
+        _sw = new StreamWriter(path);
     }
 
-    class DiagnosticWriter : IAsyncDisposable
+    public Task LogAsync(string message)
     {
-        private StreamWriter fs;
+        if (_sw is null)
+        { throw new ObjectDisposedException(nameof(DiagnosticWriter)); }
+        return _sw.WriteLineAsync(message);
+    }
 
-        public DiagnosticWriter(string path)
+    public async ValueTask DisposeAsync()
+    {
+        if (_sw != null)
         {
-            fs = new StreamWriter(path);
-        }
-
-        public Task LogAsync(string message) => fs.WriteLineAsync(message);
-
-        public async ValueTask DisposeAsync()
-        {
-            if (fs != null)
-            {
-                await fs.FlushAsync();
-                fs = null;
-            }
+            await LogAsync("Done");
+            await _sw.DisposeAsync();
+            _sw = null;
         }
     }
 }
