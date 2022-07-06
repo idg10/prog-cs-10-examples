@@ -49,7 +49,7 @@ public static class VariableFromContainingMethod
         {
             http.GetStreamAsync("https://endjin.com/")
                 .ContinueWith((Task<Stream> t) => t.Result.CopyToAsync(file));
-        } // Will probably dispose StreamWriter before callback runs
+        } // Will probably dispose FileStream before callback runs
     }
 
     private static HttpClient GetHttpClient() => new();
